@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   sorter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rage <rage@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/17 19:23:07 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/18 21:31:12 by rage             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_putadr(unsigned long adr, int ptr)
+{
+	int				size;
+	unsigned long	tmp;
+
+	size = 0;
+	tmp = adr;
+	while(tmp)
+	{
+		tmp /= 10;
+		size++;
+	}
+	write(1, &adr, size);
+}
 
 void    sort_int_arg(char c, va_list ap)
 {
@@ -32,7 +47,9 @@ void    sort_int_arg(char c, va_list ap)
 
 void	sort_str_ptr(char c, va_list ap)
 {
-	char	*s;
+    void			*ptr;
+	char			*s;
+    unsigned long	adr;
 
 	s = ft_strnew(BUFF_SIZE);
 	if(c == 's')
@@ -42,8 +59,9 @@ void	sort_str_ptr(char c, va_list ap)
 	}
 	if(c == 'p')
 	{
-		s = va_arg(ap, char *);
-		
-		write(1, *(&s), ft_strlen(s));
+		ptr = va_arg(ap, void *);
+		adr = (unsigned long)ptr;
+		write(1, "0x", 2);
+		ft_putadr(adr, 2);
 	}
 }

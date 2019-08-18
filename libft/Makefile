@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+         #
+#    By: rage <rage@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/15 15:47:49 by jormond-          #+#    #+#              #
-#    Updated: 2019/07/17 12:46:47 by jormond-         ###   ########.fr        #
+#    Updated: 2019/08/18 22:00:52 by rage             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC	= ft_bzero.c \
 		ft_isascii.c \
 		ft_isdigit.c \
 		ft_isprint.c \
+		ft_itoa_base \
 		ft_join_free.c \
 		ft_memalloc.c \
 		ft_memchr.c \
@@ -78,7 +79,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc $(CFLAGS) -c $(SRC) -I *.h
+	gcc $(CFLAGS) -c $(SRC) *.h
 	ar rc $(NAME) $(OBJ)
 
 clean:

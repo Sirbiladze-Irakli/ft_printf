@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rage <rage@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/17 19:21:53 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/18 21:06:33 by rage             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ static int		ft_printf(const char *format, ...)
 int     main()
 {
     // int     a[4] = {1, 2, 3, 4};
-	// char    b = 8;
+	char    b = 8;
 	// char    c = ~b + 1;
 	
 	// printf("% 06d\n", 45);
-    ft_printf("Raspberry Pi %p\n", "3");
-    printf("Raspberry Pi %p\n", "3");
+    ft_printf("Raspberry Pi %p\n", &b);
+    printf("Raspberry Pi %p\n", &b);
     // printf("%c\n", 'g');
     // printf("%dhh\n", 3000);
     // printf("%p\n", "wefwv");
