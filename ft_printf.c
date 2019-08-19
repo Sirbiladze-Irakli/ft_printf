@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rage <rage@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/19 19:25:58 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/19 23:02:04 by rage             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@ static void		distributor(char *buf, va_list ap)
 	i = 0;
     while(buf[i])
     {
-        if(ft_strchr(" 0#+-", *buf))
+        if (ft_strchr(" 0#+-", *buf))
 			;
-		if(ft_strchr("cdi", *buf))
+		if (ft_strchr("cdi", *buf))
 			sort_int_arg(*buf, ap);
-        if(ft_strchr("sp", *buf))
+        if (ft_strchr("sp", *buf))
 			sort_str_ptr(*buf, ap);
-        if(ft_strchr("oxX", *buf))
+        if (ft_strchr("oxX", *buf))
 			sort_oct_hex(*buf, ap);
-        if(ft_strchr("b", *buf))
+        if (ft_strchr("b", *buf))
 			sort_bin(*buf, ap);
+        if (ft_strchr("%%", *buf));
+			write(1, "%%", 1);
 		i++;
     }
 }
@@ -76,16 +78,28 @@ static int		ft_printf(const char *format, ...)
 
 int     main()
 {
+	long int c = 123412343;
     float   a = 123.123;
     // int     a[4] = {1, 2, 3, 4};
 	char    b = 8;
 	// char    c = ~b + 1;
 	
 	// printf("% 06d\n", 45);
-    ft_printf("Raspberry Pi %p\n", 123.123);
-    printf("Raspberry Pi %p\n", 123.123);
+    // ft_printf("Raspberry Pi %d%%\n", 3);
+    // printf("Raspberry Pi %d%%\n", 3);
+	// printf("Le fichier{cyan}%s{eoc} contient : {red}%s{eoc}", "filename", "str");
     // printf("%c\n", 'g');
-    // printf("%dhh\n", 3000);
+
+    // printf("%30.3s\n", "300 - otsosi u traktorista");
+	// printf("%3c\n", 'c');
+	// printf("%Ld\n", c);
+	// printf("%i\n", 2047);
+	// printf("%Lo\n", c);
+	// printf("%20Lx\n", 1024);
+	// printf("%Lp\n", &c);
+	// printf("%+%");
+	printf("%20u\n", 1024);
+	
     // printf("%p\n", "wefwv");
 	// printf("%5. 6. 4d\n", 2);
     return (0);
