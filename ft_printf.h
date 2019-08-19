@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/17 19:11:43 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/19 17:48:26 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ typedef struct	s_printf
 
 void    sort_int_arg(char c, va_list ap);
 void	sort_str_ptr(char c, va_list ap);
+void	sort_oct_hex(char c, va_list ap);
+void	sort_bin(char c, va_list ap);
 
 #endif
