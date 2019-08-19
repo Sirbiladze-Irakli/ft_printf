@@ -6,13 +6,13 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 15:00:11 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/19 17:57:27 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/19 19:06:12 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base_c(unsigned long value, int base, char c)
+char	*ft_itoa_base_c(unsigned long long value, int base, char c)
 {
 	static char		rep[16] = "0123456789abcdef";
 	static char		buf[50];

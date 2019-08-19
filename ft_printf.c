@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/19 17:51:49 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/19 19:13:11 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ int     main()
 	// char    c = ~b + 1;
 	
 	// printf("% 06d\n", 45);
-    ft_printf("Raspberry Pi %b\n", 253123);
-    printf("Raspberry Pi %llo\n", 18446744073709551615);
+    ft_printf("Raspberry Pi %p\n", 1324.123);
+    printf("Raspberry Pi %p\n", 1324.123);
     // printf("%c\n", 'g');
     // printf("%dhh\n", 3000);
     // printf("%p\n", "wefwv");

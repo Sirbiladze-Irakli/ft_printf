@@ -6,18 +6,18 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 17:25:27 by rage              #+#    #+#             */
-/*   Updated: 2019/08/19 15:07:37 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/19 19:15:35 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-char    *ft_itoa_base(unsigned long value, int base)
+char    *ft_itoa_base(unsigned long long value, int base)
 {
-    static  char	rep[] = "0123456789ABCDEF";
-    static  char	buf[50];
-    char			*ptr;
-    unsigned long	num;
+    static  char		rep[] = "0123456789ABCDEF";
+    static  char		buf[50];
+    char				*ptr;
+    unsigned long long	num;
 
     ptr = &buf[49];
     *ptr = '\0';

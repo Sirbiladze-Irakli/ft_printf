@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:43:31 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/19 17:29:36 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/19 19:07:55 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
 char				*ft_itoa(int n);
-char				*ft_itoa_base_c(unsigned long value, int base, char c);
+char				*ft_itoa_base_c(unsigned long long value, int base, char c);
 void				ft_join_free(char **content, char *buf);
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);

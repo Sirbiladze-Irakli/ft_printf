@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/19 17:51:29 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/19 19:13:46 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	sort_str_ptr(char c, va_list ap)
 	if(c == 'p')
 	{
 		ptr = va_arg(ap, void *);
-		s = ft_itoa_base_c((unsigned long)ptr, 16, c);
-		write(1, "0x7fff", 6);
+		s = ft_itoa_base_c((unsigned long long)ptr, 16, c);
+		write(1, "0x", 2);
 		write(1, s, ft_strlen(s));
 	}
 }
