@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/19 19:13:46 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/19 19:47:57 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,3 @@ void	sort_oct_hex(char c, va_list ap)
 	}
 }
 
-void	sort_bin(char c, va_list ap)
-{
-	unsigned long	i;
-	char			*s;
-
-	s = ft_strnew(BUFF_SIZE);
-	if (c == 'b')
-	{
-		i = va_arg(ap, unsigned long);
-		s = ft_itoa_base_c(i, 2, c);
-		write(1, s, ft_strlen(s));
-	}
-}
