@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rage <rage@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/21 18:07:34 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/21 22:38:46 by rage             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void	format_str(char *s, char *buf);
 void	form_width_minus(char *s, char *width, int minus);
 void    parse_struct(char *buf, t_printf *p);
 void	struct_init(t_printf *p);
+int     width_converter(char *buf, int i);
 
 #endif

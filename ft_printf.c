@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rage <rage@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/21 18:10:55 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/21 22:57:29 by rage             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,19 @@ int     ft_arg_reader(const char *format, int i, va_list ap)
 
     j = 0;
     ft_bzero(buf, BUFF_SIZE);
-    while (format[i++])
+    while (format[i])
     {
         buf[j++] = format[i];
         if (ft_strchr("bcspdiouxXf", format[i]))
         {
+			buf[j] = '\0';
+			printf("%s\n", buf);
 			parse_struct(buf, &p);
             distributor(buf, ap, &p);
 
-            break ;
+			j = -1;
         }
+		i++;
     }
     return (i);
 }
@@ -85,12 +88,12 @@ int     main()
 	// char    c = ~b + 1;
 	
 	// printf("% 06d\n", 45);
-    // ft_printf("%-6.2s\n", "Irakli");
+    ft_printf("%652s\n", "Irakli");
     // printf("Raspberry Pi %d%%\n", 3);
 	// printf("Le fichier{cyan}%s{eoc} contient : {red}%s{eoc}", "filename", "str");
     // printf("%c\n", 'g');
 
-    printf("%-6.4s\n", "Irakli");
+    // printf("%-6.4s\n", "Irakli");
 	// printf("%3c\n", 'c');
 	// printf("%Ld\n", c);
 	// printf("%i\n", 2047);
