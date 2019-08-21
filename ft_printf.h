@@ -6,14 +6,14 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/19 19:18:35 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/21 18:07:34 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define BUFF_SIZE 1024
-# define ZERO p->flags[0] 
+# define BUFF_SIZE 64
+# define ZERO p->flags[0]
 # define MINUS p->flags[1]
 # define PLUS p->flags[2]
 # define HASH p->flags[3]
@@ -25,16 +25,23 @@
 
 typedef struct	s_printf
 {
-    char		format[64];
-	char		flags[8];
+    char		formated[BUFF_SIZE];
+	char		flags[5];
 	int			width;
 	int			prec;
-	char		specifier[4];
+	char		modifier[4];
+	char		specifier;
 }				t_printf;
 
-void    sort_int_arg(char c, va_list ap);
-void	sort_str_ptr(char c, va_list ap);
-void	sort_oct_hex(char c, va_list ap);
+int     ft_arg_reader(const char *format, int i, va_list ap);
+void	distributor(char *buf, va_list ap, t_printf *p);
+void	sort_int_arg(char c, va_list ap, char *buf);
+void	sort_str_ptr(char c, va_list ap, char *buf);
+void	sort_oct_hex(char c, va_list ap, char *buf);
 void	sort_bin(char c, va_list ap);
+void	format_str(char *s, char *buf);
+void	form_width_minus(char *s, char *width, int minus);
+void    parse_struct(char *buf, t_printf *p);
+void	struct_init(t_printf *p);
 
 #endif

@@ -3,42 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rage <rage@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/19 23:02:04 by rage             ###   ########.fr       */
+/*   Updated: 2019/08/21 18:10:55 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		distributor(char *buf, va_list ap)
+void		distributor(char *buf, va_list ap, t_printf *p)
 {
 	int i;
 
 	i = 0;
     while(buf[i])
     {
-        if (ft_strchr(" 0#+-", *buf))
-			;
+        // if (ft_strchr(" 0#+-", *buf))
+		// 	;
 		if (ft_strchr("cdi", *buf))
-			sort_int_arg(*buf, ap);
+			sort_int_arg(*buf, ap, buf);
         if (ft_strchr("sp", *buf))
-			sort_str_ptr(*buf, ap);
+			sort_str_ptr(*buf, ap, buf);
         if (ft_strchr("oxX", *buf))
-			sort_oct_hex(*buf, ap);
+			sort_oct_hex(*buf, ap, buf);
         if (ft_strchr("b", *buf))
 			sort_bin(*buf, ap);
-        if (ft_strchr("%%", *buf));
+        if (ft_strchr("%%", *buf))
 			write(1, "%%", 1);
 		i++;
     }
 }
 
-static int     ft_arg_reader(const char *format, int i, va_list ap)
+int     ft_arg_reader(const char *format, int i, va_list ap)
 {
-    char    buf[BUFF_SIZE];
-    int     j;
+    char		buf[BUFF_SIZE];
+	t_printf	p;
+    int			j;
 
     j = 0;
     ft_bzero(buf, BUFF_SIZE);
@@ -47,7 +48,9 @@ static int     ft_arg_reader(const char *format, int i, va_list ap)
         buf[j++] = format[i];
         if (ft_strchr("bcspdiouxXf", format[i]))
         {
-            distributor(buf, ap);
+			parse_struct(buf, &p);
+            distributor(buf, ap, &p);
+
             break ;
         }
     }
@@ -56,13 +59,10 @@ static int     ft_arg_reader(const char *format, int i, va_list ap)
 
 static int		ft_printf(const char *format, ...)
 {
-    int	    i;
-    char    c;
-    char    buf[BUFF_SIZE];
-    va_list ap;
+    int	        i;
+    va_list     ap;
 
     i = 0;
-    ft_bzero(buf, BUFF_SIZE);
     va_start(ap, format);
     while(format[i])
     {
@@ -71,26 +71,26 @@ static int		ft_printf(const char *format, ...)
         else
             i = ft_arg_reader(format, i, ap);
         i++;
-    }
+    }    
     va_end(ap);
 	return (i);
 }
 
 int     main()
 {
-	long int c = 123412343;
-    float   a = 123.123;
+	// long int c = 123412343;
+    // long double   a = 123.123;
     // int     a[4] = {1, 2, 3, 4};
-	char    b = 8;
+	// char    b = 8;
 	// char    c = ~b + 1;
 	
 	// printf("% 06d\n", 45);
-    // ft_printf("Raspberry Pi %d%%\n", 3);
+    // ft_printf("%-6.2s\n", "Irakli");
     // printf("Raspberry Pi %d%%\n", 3);
 	// printf("Le fichier{cyan}%s{eoc} contient : {red}%s{eoc}", "filename", "str");
     // printf("%c\n", 'g');
 
-    // printf("%30.3s\n", "300 - otsosi u traktorista");
+    printf("%-6.4s\n", "Irakli");
 	// printf("%3c\n", 'c');
 	// printf("%Ld\n", c);
 	// printf("%i\n", 2047);
@@ -98,7 +98,7 @@ int     main()
 	// printf("%20Lx\n", 1024);
 	// printf("%Lp\n", &c);
 	// printf("%+%");
-	printf("%20u\n", 1024);
+	// printf("%Lf\n", a);
 	
     // printf("%p\n", "wefwv");
 	// printf("%5. 6. 4d\n", 2);

@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonuses.c                                          :+:      :+:    :+:   */
+/*   minus_width_format.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/19 19:18:31 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/21 17:25:59 by jormond-         ###   ########.fr       */
+/*   Created: 2019/08/21 14:32:24 by jormond-          #+#    #+#             */
+/*   Updated: 2019/08/21 15:06:23 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	sort_bin(char c, va_list ap)
+void    form_width_minus(char *s, char *width, int minus)
 {
-	unsigned long	i;
-	char			*s;
+    int     size;
+    char    *s1;
 
-	s = ft_strnew(BUFF_SIZE);
-	if (c == 'b')
-	{
-		i = va_arg(ap, unsigned long);
-		s = ft_itoa_base_c(i, 2, c);
-		write(1, s, ft_strlen(s));
-	}
+    size = ft_atoi(width) - ft_strlen(s);
+    printf("%d\n", size);
 }
