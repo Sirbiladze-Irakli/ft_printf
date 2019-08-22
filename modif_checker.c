@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_init.c                                      :+:      :+:    :+:   */
+/*   modif_checker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/21 16:13:37 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/22 19:46:01 by jormond-         ###   ########.fr       */
+/*   Created: 2019/08/22 17:05:58 by jormond-          #+#    #+#             */
+/*   Updated: 2019/08/22 18:07:09 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    struct_init(t_printf *p)
+int     modif_checker(t_printf *p, char *buf, int i)
 {
-    ft_memset(p->flags, '0', 5);
-	p->width = 0;
-	p->prec = 0;
-	ft_bzero(p->modifier, 4);
-	p->specifier = '\0';
+    int     j;
+
+    j = 0;
+    while(ft_strchr("hlL", buf[i]))
+        p->modifier[j++] = buf[i++];
+    p->modifier[j] = '\0';
+    return(i);
 }

@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/21 16:01:51 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/22 20:07:02 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,17 @@ void    sort_int_arg(char c, va_list ap, char *buf)
     }
 }
 
-void	sort_str_ptr(char c, va_list ap, char *buf)
+void	sort_str_ptr(char c, va_list ap, char *buf, t_printf *p)
 {
     void			*ptr;
 	char			*s;
 	int				d;
 
-	// s = ft_strnew
 	if(c == 's')
 	{
 		s = ft_strnew(ft_strlen(va_arg(ap, char *)));
-		printf("%s", s);
-		// format_str(s, buf);
+		// printf("%s", s);
+		format_str(s, p);
 		// write(1, s, ft_strlen(s));
 	}
 	if(c == 'p')

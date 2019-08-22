@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/21 18:10:55 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/22 20:07:05 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,15 @@ void		distributor(char *buf, va_list ap, t_printf *p)
 	i = 0;
     while(buf[i])
     {
-        // if (ft_strchr(" 0#+-", *buf))
-		// 	;
-		if (ft_strchr("cdi", *buf))
-			sort_int_arg(*buf, ap, buf);
-        if (ft_strchr("sp", *buf))
-			sort_str_ptr(*buf, ap, buf);
-        if (ft_strchr("oxX", *buf))
-			sort_oct_hex(*buf, ap, buf);
-        if (ft_strchr("b", *buf))
-			sort_bin(*buf, ap);
-        if (ft_strchr("%%", *buf))
+		if (ft_strchr("cdi", buf[i]))
+			sort_int_arg(buf[i], ap, buf);
+        if (ft_strchr("sp", buf[i]))
+			sort_str_ptr(buf[i], ap, buf, p);
+        if (ft_strchr("oxX", buf[i]))
+			sort_oct_hex(buf[i], ap, buf);
+        if (ft_strchr("b", buf[i]))
+			sort_bin(buf[i], ap);
+        if (ft_strchr("%%", buf[i]))
 			write(1, "%%", 1);
 		i++;
     }
@@ -43,16 +41,18 @@ int     ft_arg_reader(const char *format, int i, va_list ap)
 
     j = 0;
     ft_bzero(buf, BUFF_SIZE);
-    while (format[i++])
+    while (format[i])
     {
         buf[j++] = format[i];
         if (ft_strchr("bcspdiouxXf", format[i]))
         {
+			buf[j] = '\0';
 			parse_struct(buf, &p);
             distributor(buf, ap, &p);
 
-            break ;
+			j = 0;
         }
+		i++;
     }
     return (i);
 }
@@ -85,14 +85,14 @@ int     main()
 	// char    c = ~b + 1;
 	
 	// printf("% 06d\n", 45);
-    // ft_printf("%-6.2s\n", "Irakli");
+    ft_printf("%4s\n", "hi");
     // printf("Raspberry Pi %d%%\n", 3);
 	// printf("Le fichier{cyan}%s{eoc} contient : {red}%s{eoc}", "filename", "str");
     // printf("%c\n", 'g');
 
-    printf("%-6.4s\n", "Irakli");
+    // printf("%-6.4s\n", "Irakli");
 	// printf("%3c\n", 'c');
-	// printf("%Ld\n", c);
+	// printf("%lld\n", 52);
 	// printf("%i\n", 2047);
 	// printf("%Lo\n", c);
 	// printf("%20Lx\n", 1024);
