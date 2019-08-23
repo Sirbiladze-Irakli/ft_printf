@@ -6,13 +6,15 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 12:24:07 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/22 20:07:03 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/23 21:03:36 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    format_str(char *s, t_printf *p)
+char    *format_str(char *s, t_printf *p)
 {
-	form_width_minus(s, p);
+	s = form_width_minus(s, p);
+	
+	return (s);
 }

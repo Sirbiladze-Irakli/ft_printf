@@ -6,7 +6,7 @@
 #    By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/22 14:06:12 by jormond-          #+#    #+#              #
-#    Updated: 2019/08/22 16:13:28 by jormond-         ###   ########.fr        #
+#    Updated: 2019/08/23 13:13:58 by jormond-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ SRC		=	ft_printf.c \
 			spec_format.c \
 			struct_init.c \
 			width_converter.c \
+			prec_converter.c \
+			modif_checker.c \
 			minus_width_format.c
 
 OBJS	=	$(SRC:.c=.o)
@@ -40,7 +42,7 @@ $(LIB):
 	make -C ./libft re
 
 $(OBJS):
-	$(CC) $(CFLAGS) -c $< $(INC) -o $@
+	$(CC) $(CFLAGS) -c $< -I $(INC) -o $@
 
 clean:
 	rm -f $(OBJ)
