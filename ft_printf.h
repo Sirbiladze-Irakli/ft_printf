@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/23 20:58:03 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/24 17:04:33 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 typedef struct	s_printf
 {
-    // char		formated[BUFF_SIZE];
 	char		flags[5];
 	int			width;
 	int			prec;
@@ -41,12 +40,18 @@ void	sort_str_ptr(char c, va_list ap, t_printf *p);
 void	sort_oct_hex(char c, va_list ap, t_printf *p);
 void	sort_bin(char c, va_list ap);
 char	*format_str(char *s, t_printf *p);
+char    *format_int(char *s, t_printf *p);
+char    *format_uint(char *s, t_printf *p);
 char    *form_width_minus(char *s, t_printf *p);
+char    *form_prec(char *s, t_printf *p);
+char	*form_plus(char *s);
+char	*form_space(char *s);
 void    parse_struct(char *buf, t_printf *p);
 void	struct_init(t_printf *p);
 int     width_converter(t_printf *p, char *buf, int i);
 int		prec_converter(t_printf *p, char *buf, int i);
 int		modif_checker(t_printf *p, char *buf, int i);
 int     ft_compare_chr(char *str, char c);
+
 
 #endif

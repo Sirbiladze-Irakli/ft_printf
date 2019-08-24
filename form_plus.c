@@ -1,22 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_init.c                                      :+:      :+:    :+:   */
+/*   form_plus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/21 16:13:37 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/24 16:23:28 by jormond-         ###   ########.fr       */
+/*   Created: 2019/08/24 16:37:03 by jormond-          #+#    #+#             */
+/*   Updated: 2019/08/24 16:53:34 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    struct_init(t_printf *p)
+char	*form_plus(char *s)
 {
-    ft_memset(p->flags, '0', 5);
-	p->width = 0;
-	p->prec = -1;
-	ft_bzero(p->modifier, 4);
-	p->specifier = '\0';
+	int		i;
+	char	*s1;
+
+	i = 0;
+	s1 = ft_strnew(ft_strlen(s)) + 1;
+	if (s[i] != '-')
+	{
+		s1[i++] = '+';
+		while(s[i - 1])
+		{
+			s1[i] = s[i - 1];
+			i++;
+		}
+	}
+	else
+	{
+		while (s[i])
+		{
+			s1[i] = s[i];
+			i++;
+		}
+	}
+	return(s1);
 }

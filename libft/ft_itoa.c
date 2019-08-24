@@ -3,58 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormond- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:55:02 by jormond-          #+#    #+#             */
-/*   Updated: 2019/02/07 15:33:40 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/24 16:01:42 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_len(long n)
+static size_t		ft_uintlen(unsigned int n)
 {
-	int		len;
+	size_t	size;
 
-	len = 0;
-	if (n < 0)
-	{
-		n = n * -1;
-		len++;
-	}
-	while (n > 0)
-	{
-		n = n / 10;
-		len++;
-	}
-	return (len);
+	size = 0;
+	while (n >= 10 ? n /= 10 : 0)
+		++size;
+	return (++size);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(long int n)
 {
-	char	*str;
-	long	nb;
-	int		i;
+	char			*str;
+	unsigned int	un;
+	long int		i;
+	size_t			size;
 
-	nb = n;
-	i = ft_len(nb);
-	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	str[i--] = '\0';
-	if (nb == 0)
+	un = n < 0 ? (unsigned int)(n * -1) : (unsigned int)n;
+	size = ft_uintlen(un);
+	if ((str = ft_strnew(size + (n < 0 ? 1 : 0))))
 	{
-		str[0] = 48;
-		return (str);
-	}
-	if (nb < 0)
-	{
-		str[0] = '-';
-		nb = nb * -1;
-	}
-	while (nb > 0)
-	{
-		str[i--] = 48 + (nb % 10);
-		nb = nb / 10;
+		n < 0 && (str[0] = '-') ? (++size) : 0;
+		i = (int)(size - 1);
+		while (un > 9)
+		{
+			str[i--] = (char)(un % 10 + '0');
+			un /= 10;
+		}
+		str[i] = (char)(un % 10 + '0');
+		str[size] = '\0';
 	}
 	return (str);
 }

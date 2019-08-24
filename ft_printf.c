@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/23 21:03:18 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/24 17:07:08 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void		distributor(char *buf, va_list ap, t_printf *p)
 	i = 0;
     while(buf[++i])
     {
-		if (buf[i] == 'd' || buf[i] == 'i' || buf[i] == 'c')
+		if (ft_compare_chr("diuc", buf[i]))
 			sort_int_chr(buf[i], ap, p);
         else if (buf[i] == 's' || buf[i] == 'p')
 			sort_str_ptr(buf[i], ap, p);
-        else if (buf[i] == 'o' || buf[i] == 'x' || buf[i] == 'X')
+        else if (ft_compare_chr("oxX", buf[i]))
 			sort_oct_hex(buf[i], ap, p);
         else if (buf[i] == 'b')
 			sort_bin(buf[i], ap);
@@ -75,6 +75,7 @@ int		ft_printf(const char *format, ...)
 
 int     main()
 {
+    unsigned int i = -1;
 	// long int c = 123412343;
     // long double   a = 123.123;
     // int     a[4] = {1, 2, 3, 4};
@@ -82,8 +83,8 @@ int     main()
 	// char    c = ~b + 1;
 	
 	// printf("% 06d\n", 45);
-    ft_printf("%-s\n", "Rage");
-    printf("%-s\n", "Rage");
+    ft_printf("%-15u\n", i);
+    printf("%-15u\n", i);
     // printf("Raspberry Pi %d%%\n", 3);
 	// printf("Le fichier{cyan}%s{eoc} contient : {red}%s{eoc}", "filename", "str");
     // printf("%c\n", 'g');

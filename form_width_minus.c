@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 14:32:24 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/23 21:02:08 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/24 16:28:47 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ char    *form_width_minus(char *s, t_printf *p)
     char    *s1;
 
     i = -1;
-    size = 0;
-    if (p->width > (int)ft_strlen(s))
-        size = p->width - ft_strlen(s);
+    size = p->width - ft_strlen(s);
     s1 = ft_strnew(p->width);
     if (ZERO == '1')
         s1 = ft_memset(s1, 48, p->width);
