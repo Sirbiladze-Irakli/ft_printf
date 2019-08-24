@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/24 17:07:08 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/24 18:14:45 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int     main()
 	// char    c = ~b + 1;
 	
 	// printf("% 06d\n", 45);
-    ft_printf("%-15u\n", i);
-    printf("%-15u\n", i);
+    ft_printf("%10c\n", 'd');
+    printf("%10c\n", 'd');
     // printf("Raspberry Pi %d%%\n", 3);
 	// printf("Le fichier{cyan}%s{eoc} contient : {red}%s{eoc}", "filename", "str");
     // printf("%c\n", 'g');

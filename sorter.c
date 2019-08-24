@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/24 16:25:29 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/24 18:17:36 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ void    sort_int_chr(char c, va_list ap, t_printf *p)
 		}
     if(c == 'c')
     {
-        *s = (c = va_arg(ap, int));
-        write(1, s, 1);
+        s[0] = (c = va_arg(ap, int));
+		s = format_chr(s, p);
+        write(1, s, ft_strlen(s));
     }
 	if(c == 'u')
     {
 		s = ft_itoa(va_arg(ap, unsigned long));
+		s = format_uint(s, p);
         write(1, s, ft_strlen(s));
     }
 }
