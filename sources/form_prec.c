@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   form_prec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwilderm <hwilderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 13:31:45 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/24 18:02:55 by hwilderm         ###   ########.fr       */
+/*   Updated: 2019/08/25 19:07:46 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,21 @@
 char    *form_prec(char *s, t_printf *p)
 {
 	int		i;
+    int     size;
 	char	*s1;
 
 	i = -1;
-	s1 = ft_strnew(ft_strlen(s));
-	while(++i < p->prec)
-		s1[i] = s[i];
+	size = 0;
+	if (p->prec < (int)ft_strlen(s))
+		s1 = ft_strnew(ft_strlen(s));
+	else
+	{
+		s1 = ft_strnew(p->prec);
+		size = p->prec - (int)ft_strlen(s);
+	}
+	if (size > 0)
+		while (++i < size)
+			s1[i] = '0';
+	s1 = ft_strjoin(s1, s);
     return (s1);
 }

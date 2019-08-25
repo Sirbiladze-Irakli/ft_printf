@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hwilderm <hwilderm@student.42.fr>          +#+  +:+       +#+         #
+#    By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/22 14:06:12 by jormond-          #+#    #+#              #
-#    Updated: 2019/08/25 12:03:57 by hwilderm         ###   ########.fr        #
+#    Updated: 2019/08/25 18:37:56 by jormond-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	ft_printf
 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra
+#FLAGS = -Wall -Werror -Wextra
 LIBRARIES = -lft -L$(LIBFT_DIRECTORY)
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS)
 
@@ -27,9 +27,9 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./sources/
 SOURCES_LIST = 	arg_form.c bonuses.c form_plus.c form_prec.c form_space.c \
-				form_width_minus.c ft_compare_chr.c ft_printf.c \
+				form_width_minus.c ft_printf.c arg_form2.c \
 				modif_checker.c parse_struct.c prec_converter.c sorter.c \
-				struct_init.c width_converter.c
+				struct_init.c width_converter.c form_uint_prec.c 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
 OBJECTS_DIRECTORY = objects/
