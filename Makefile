@@ -3,51 +3,76 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+         #
+#    By: hwilderm <hwilderm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/22 14:06:12 by jormond-          #+#    #+#              #
-#    Updated: 2019/08/23 13:13:58 by jormond-         ###   ########.fr        #
+#    Updated: 2019/08/25 12:03:57 by hwilderm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	ft_printf.a
+NAME	=	ft_printf
 
-CC		=	gcc
+CC = gcc
+FLAGS = -Wall -Werror -Wextra
+LIBRARIES = -lft -L$(LIBFT_DIRECTORY)
+INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS)
 
-FLAGS	=	-Wall -Wextra -Werror
+LIBFT = $(LIBFT_DIRECTORY)libft.a
+LIBFT_DIRECTORY = ./libft/
+LIBFT_HEADERS = $(addprefix $(LIBFT_DIRECTORY), $(LIBFT))
 
-INC		=	ft_printf.h
+HEADERS_LIST = ft_printf.h
+HEADERS_DIRECTORY = ./includes/
+HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
-LIB		=	./libft/libft.a
+SOURCES_DIRECTORY = ./sources/
+SOURCES_LIST = 	arg_form.c bonuses.c form_plus.c form_prec.c form_space.c \
+				form_width_minus.c ft_compare_chr.c ft_printf.c \
+				modif_checker.c parse_struct.c prec_converter.c sorter.c \
+				struct_init.c width_converter.c
+SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
-SRC		=	ft_printf.c \
-			bonuses.c \
-			parce_struct.c \
-			sorter.c \
-			spec_format.c \
-			struct_init.c \
-			width_converter.c \
-			prec_converter.c \
-			modif_checker.c \
-			minus_width_format.c
+OBJECTS_DIRECTORY = objects/
+OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))
+OBJECTS	= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 
-OBJS	=	$(SRC:.c=.o)
+GREEN = \033[1;32m
+RED = \033[1;31m
+RESET = \033[0m
+
+.PHONY: all clean fclean re
 
 all : $(NAME)
 
-$(NAME): $(LIB) $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME) $(LIB)
+$(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS)
+	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJECTS) -o $(NAME)
+	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
+	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
-$(LIB):
-	make -C ./libft re
+$(OBJECTS_DIRECTORY):
+	@mkdir -p $(OBJECTS_DIRECTORY)
+	@echo "$(NAME): $(GREEN)$(OBJECTS_DIRECTORY) was created$(RESET)"
 
-$(OBJS):
-	$(CC) $(CFLAGS) -c $< -I $(INC) -o $@
+$(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c $(HEADERS)
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
+
+$(LIBFT):
+	@echo "$(NAME): $(GREEN)Creating $(LIBFT)...$(RESET)"
+	@$(MAKE) -sC $(LIBFT_DIRECTORY)
 
 clean:
-	rm -f $(OBJ)
+	@$(MAKE) -sC $(LIBFT_DIRECTORY) clean
+	@rm -rf $(OBJECTS_DIRECTORY)
+	@echo "$(NAME): $(RED)$(OBJECTS_DIRECTORY) was deleted$(RESET)"
+	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(LIBFT)
+	@echo "$(NAME): $(RED)$(LIBFT) was deleted$(RESET)"
+	@rm -f $(NAME)
+	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
-re: fclean all
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all
