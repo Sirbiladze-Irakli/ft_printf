@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/25 17:16:33 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/26 19:57:30 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ char    *format_oct(char *s, t_printf *p);
 char    *format_hex(char *s, t_printf *p);
 char    *form_width_minus(char *s, t_printf *p);
 char    *form_width_hex(char *s, t_printf *p);
+char    *form_prec_hex(char *s, t_printf *p);
+char	*form_check_hash(char *s1, t_printf *p);
+char	*form_join_zero(char *s1, t_printf *p, int size);
+char	*form_wd_zero(char *s1, t_printf *p);
+void    form_wd_check_hash(char *s1, t_printf *p);
+char    *form_wd_prec_hex(char *s, char *s1, t_printf *p);
+char    *form_minus_hex(char *s1, t_printf *p, int size, int len);
+char    *form_zero_hash(char *s, char *s1, t_printf *p);
+char	*form_min_hex(char *s, char *s1, t_printf *p);
 char    *form_prec(char *s, t_printf *p);
 char	*form_plus(char *s);
 char	*form_space(char *s);

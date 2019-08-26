@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 18:29:10 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/25 18:36:15 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/26 13:13:49 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int     main()
 	// char    c = ~b + 1;
 	
     // printf("Le fichier{cyan}%s{eoc} contient : {red}%s{eoc}", "fasdf", "asfd");
-	ft_printf("%-10.3x - My\n", i);
-    printf("%-10.3x - Orig\n", i);
+	ft_printf("%30.20x - My\n", i);
+    printf("%30.20x - Orig\n", i);
     
     // printf("%-15u\n", i);
     // printf("Raspberry Pi %d%%\n", 3);

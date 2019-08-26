@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:40:31 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/25 13:19:22 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/26 14:19:31 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void    parse_struct(char *buf, t_printf *p)
 		if (ft_strchr("hlL", buf[i]))
 			i = modif_checker(p, buf, i);
 	}
+	p->specifier = buf[i - 1];
 }
