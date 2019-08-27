@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/25 15:31:21 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/27 21:37:54 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,15 @@ void    sort_int_chr(char c, va_list ap, t_printf *p)
 
 void	sort_str_ptr(char c, va_list ap, t_printf *p)
 {
+	int				i;
     void			*ptr;
 	char			*s;
 
-	s = ft_strnew(4096);
+
 	if(c == 's')
 	{
-		s = va_arg(ap, char *);
+		ft_strdup_free(&s, va_arg(ap, char *));
+		printf("%s - s\n", s);
 		s = format_str(s, p);
 		write(1, s, ft_strlen(s));
 	}
@@ -54,6 +56,7 @@ void	sort_str_ptr(char c, va_list ap, t_printf *p)
 		s = format_ptr(s, p);
 		write(1, s, ft_strlen(s));
 	}
+	free (s);
 }
 
 void	sort_oct_hex(char c, va_list ap, t_printf *p)
@@ -61,10 +64,10 @@ void	sort_oct_hex(char c, va_list ap, t_printf *p)
 	unsigned long	i;
 	char			*s;
 
-	s = ft_strnew(BUFF_SIZE);
 	if (c == 'x' || c == 'X')
 	{
 		i = va_arg(ap, unsigned long);
+		s = ft_strnew(ft_nbrlen(i));
 		s = ft_itoa_base_c(i, 16, c);
 		s = format_hex(s, p);
 		write(1, s, ft_strlen(s));
@@ -72,9 +75,9 @@ void	sort_oct_hex(char c, va_list ap, t_printf *p)
 	if (c == 'o')
 	{
 		i = va_arg(ap, unsigned long);
+		s = ft_strnew(ft_nbrlen(i));
 		s = ft_itoa_base_c(i, 8, c);
 		s = format_oct(s, p);
 		write(1, s, ft_strlen(s));
 	}
 }
-

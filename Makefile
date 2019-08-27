@@ -6,14 +6,14 @@
 #    By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/22 14:06:12 by jormond-          #+#    #+#              #
-#    Updated: 2019/08/26 15:09:30 by jormond-         ###   ########.fr        #
+#    Updated: 2019/08/27 18:23:00 by jormond-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	ft_printf
+NAME	=	libftprintf.a
 
 CC = gcc
-#FLAGS = -Wall -Werror -Wextra
+# FLAGS = -Wall -Werror -Wextra
 LIBRARIES = -lft -L$(LIBFT_DIRECTORY)
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS)
 
@@ -29,7 +29,8 @@ SOURCES_DIRECTORY = ./sources/
 SOURCES_LIST = 	arg_form.c bonuses.c form_plus.c form_prec.c form_space.c \
 				form_width_minus.c ft_printf.c arg_form2.c form_hex.c \
 				modif_checker.c parse_struct.c prec_converter.c sorter.c \
-				struct_init.c width_converter.c form_uint_prec.c form_hex2.c
+				struct_init.c width_converter.c form_uint_prec.c form_hex2.c \
+				tools.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
 OBJECTS_DIRECTORY = objects/
@@ -45,9 +46,11 @@ RESET = \033[0m
 all : $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS)
-	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJECTS) -o $(NAME)
+	@cp $(LIBFT) ./$(NAME)
+	@ar rc $(NAME) $(OBJECTS)
+	@ranlib $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
-	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"	
 
 $(OBJECTS_DIRECTORY):
 	@mkdir -p $(OBJECTS_DIRECTORY)

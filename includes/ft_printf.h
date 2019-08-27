@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/26 19:57:30 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/27 21:35:19 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_printf
 	int			prec;
 	char		modifier[4];
 	char		specifier;
+	char		hex_hash[2];
 }				t_printf;
 
 int		ft_printf(const char *format, ...);
@@ -54,7 +55,7 @@ char	*form_join_zero(char *s1, t_printf *p, int size);
 char	*form_wd_zero(char *s1, t_printf *p);
 void    form_wd_check_hash(char *s1, t_printf *p);
 char    *form_wd_prec_hex(char *s, char *s1, t_printf *p);
-char    *form_minus_hex(char *s1, t_printf *p, int size, int len);
+char    *form_minus_hex(char *s1, char *s, t_printf *p, int len);
 char    *form_zero_hash(char *s, char *s1, t_printf *p);
 char	*form_min_hex(char *s, char *s1, t_printf *p);
 char    *form_prec(char *s, t_printf *p);
@@ -66,7 +67,9 @@ void	struct_init(t_printf *p);
 int     width_converter(t_printf *p, char *buf, int i);
 int		prec_converter(t_printf *p, char *buf, int i);
 int		modif_checker(t_printf *p, char *buf, int i);
-
-
+int     ft_nbrlen(unsigned long i);
+void	front_add_hash(char *s, t_printf *p, int len);
+char	*front_add_hex(char *s, t_printf *p);
+void    ft_strdup_free(char **s, char *arg);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:48:48 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/26 20:02:41 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/27 18:17:38 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ char    *format_oct(char *s, t_printf *p)
 
 char    *format_hex(char *s, t_printf *p)
 {
+	char	*s1;
 	if (ZERO == '1' && MINUS == '1')
 		ZERO = '0';
-	if (p->prec >= 0)
-		ZERO = '0';
-	if (p->prec > p->width)
-		s = form_prec_hex(s, p);
-	else
-		s = form_width_hex(s, p);
+	if (MINUS == '1')
+		s = front_add_hex(s, p);
+	// if (p->prec >= 0)
+	// 	ZERO = '0';
+	// if (p->prec >= p->width)
+	// 	s = form_prec_hex(s, p);
+	// else
+	// 	s = form_width_hex(s, p);
 	return (s);
 }

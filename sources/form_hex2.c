@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:06:00 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/26 20:28:25 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/27 16:07:37 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ char    *form_zero_hash(char *s, char *s1, t_printf *p)
     j = 0;
     if ((size = p->width - (int)ft_strlen(s)) < 0)
         size = 0;
-    printf("%d - s1\n", size);
     if (HASH == '1' && ZERO == '0')
     {
 		if (p->specifier == 'x')
@@ -81,9 +80,8 @@ char    *form_zero_hash(char *s, char *s1, t_printf *p)
     else if (HASH == '1')
     {
 		form_wd_check_hash(s1, p);
-        printf("%s - s1\n", s1);
+        
     }
-    printf("%s - s1\n", s1);
     i = -1;
     while(s[j])
         s1[size + ++i] = s[j++];

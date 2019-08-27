@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 13:31:45 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/25 19:07:46 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/27 21:39:01 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ char    *form_prec(char *s, t_printf *p)
 		while (++i < size)
 			s1[i] = '0';
 	s1 = ft_strjoin(s1, s);
+	printf("%s - s1\n", s1);
     return (s1);
 }
