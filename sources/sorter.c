@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/27 21:37:54 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/28 19:59:05 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void    sort_int_chr(char c, va_list ap, t_printf *p)
 {
 	char    *s;
+	char	c1;
 
 	s = ft_strnew(11);
 	if(c == 'd' || c == 'i')
@@ -25,8 +26,8 @@ void    sort_int_chr(char c, va_list ap, t_printf *p)
 		}
     if(c == 'c')
     {
-        *s = (c = va_arg(ap, int));
-        write(1, s, 1);
+        c1 = (c = va_arg(ap, int));
+        write(1, &c1, 1);
     }
 	if(c == 'u')
     {
@@ -37,16 +38,21 @@ void    sort_int_chr(char c, va_list ap, t_printf *p)
 
 void	sort_str_ptr(char c, va_list ap, t_printf *p)
 {
-	int				i;
     void			*ptr;
 	char			*s;
+	char			*tmp;
+	int				i;
 
-
+	i = -1;
 	if(c == 's')
 	{
-		ft_strdup_free(&s, va_arg(ap, char *));
-		printf("%s - s\n", s);
-		s = format_str(s, p);
+		tmp = va_arg(ap, char *);
+		if (ZERO == '1')
+			ZERO = '0';
+		form_width(&s, ft_strlen(tmp), tmp, p);
+		while (tmp[++i])
+			s[i] = tmp[i];
+		format_str(&s, tmp, p);
 		write(1, s, ft_strlen(s));
 	}
 	if(c == 'p')
@@ -56,7 +62,7 @@ void	sort_str_ptr(char c, va_list ap, t_printf *p)
 		s = format_ptr(s, p);
 		write(1, s, ft_strlen(s));
 	}
-	free (s);
+	// free (s);
 }
 
 void	sort_oct_hex(char c, va_list ap, t_printf *p)

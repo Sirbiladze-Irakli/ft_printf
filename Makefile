@@ -6,7 +6,7 @@
 #    By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/22 14:06:12 by jormond-          #+#    #+#              #
-#    Updated: 2019/08/27 18:23:00 by jormond-         ###   ########.fr        #
+#    Updated: 2019/08/28 14:32:30 by jormond-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./sources/
-SOURCES_LIST = 	arg_form.c bonuses.c form_plus.c form_prec.c form_space.c \
-				form_width_minus.c ft_printf.c arg_form2.c form_hex.c \
+SOURCES_LIST = 	arg_form.c bonuses.c form_plus.c form_tools.c form_space.c \
+				ft_printf.c arg_form2.c form_hex.c \
 				modif_checker.c parse_struct.c prec_converter.c sorter.c \
 				struct_init.c width_converter.c form_uint_prec.c form_hex2.c \
 				tools.c

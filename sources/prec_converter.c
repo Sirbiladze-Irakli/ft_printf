@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 16:36:13 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/25 13:19:36 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/28 12:50:54 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int    prec_converter(t_printf *p, char *buf, int i)
     char	tmp[11];
     
     j = 0;
+	p->dot = 1;
 	if (!ft_strchr("0123456789", buf[i]))
 		p->prec = 0;
 	else

@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:10:52 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/27 18:32:04 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/28 11:32:49 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	front_add_hash(char *s, t_printf *p, int len)
 	int		size;
 
 	i  = -1;
-	if (HASH == '1')
-		p->prec > len ? p->prec + 2 : len + 2;
+	// if (HASH == '1')
+	// 	p->prec > len ? p->prec + 2 : len + 2;
 	if (p->prec > len)
 		size = p->prec; 
 	else
