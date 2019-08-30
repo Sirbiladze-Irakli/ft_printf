@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 13:31:45 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/28 20:11:31 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/30 14:49:17 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void    form_prec_min(char **s, char *tmp, t_printf *p)
 		return ;
 	else if (p->prec >= 0)
 	{
-		ft_strsub_free(s, tmp, p);
+		// ft_strcut_arg(tmp, p);
 		return ;
 	}
 	else
@@ -29,14 +29,18 @@ void    form_prec_min(char **s, char *tmp, t_printf *p)
 	
 }
 
-void    form_width(char **s, int len, char *tmp, t_printf *p)
-{
-	int		i;
-	int		size;
+// void	form_width_char(char **s, int len, char c1, t_printf *p)
+// {
+// 	ft_arg_malloc(s, len, p);
+// }
 
-	i = -1;
-	if ((size = p->width - len) < 0)
-		size = 0;
+// void    form_width(char **s, int len, char *tmp, t_printf *p)
+// {
+// 	ft_arg_malloc(s, len, p);
+// }
+
+void	ft_arg_mal(char **s, int len, t_printf *p)
+{
 	if (p->width > len)
 	{
 		*s = (char *)malloc(sizeof(char) * (p->width));
@@ -47,8 +51,6 @@ void    form_width(char **s, int len, char *tmp, t_printf *p)
 		*s = (char *)malloc(sizeof(char) * (len));
 		form_zero(s, len, p);
 	}
-	while (++i)
-		s[size + i] = &tmp[i];
 }
 
 void	form_zero(char **s, int size, t_printf *p)

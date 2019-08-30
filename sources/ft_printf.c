@@ -6,30 +6,24 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/27 21:23:44 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/30 12:03:30 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		distributor(char *buf, va_list ap, t_printf *p)
+void		distributor(va_list ap, t_printf *p)
 {
-	int i;
-
-	i = 0;
-    while(buf[++i])
-    {
-		if (ft_strchr("diuc", buf[i]))
-			sort_int_chr(buf[i], ap, p);
-        else if (buf[i] == 's' || buf[i] == 'p')
-			sort_str_ptr(buf[i], ap, p);
-        else if (ft_strchr("oxX", buf[i]))
-			sort_oct_hex(buf[i], ap, p);
-        else if (buf[i] == 'b')
-			sort_bin(buf[i], ap);
-        else if (ft_strchr("%%", buf[i]))
-			write(1, "%%", 1);
-    }
+    if (ft_strchr("diuc", p->specifier))
+        sort_int_chr(p->specifier, ap, p);
+    else if (p->specifier == 's' || p->specifier == 'p')
+        sort_str_ptr(p->specifier, ap, p);
+    else if (ft_strchr("oxX", p->specifier))
+        sort_oct_hex(p->specifier, ap, p);
+    else if (p->specifier == 'b')
+        sort_bin(p->specifier, ap);
+    else if (ft_strchr("%%", p->specifier))
+        write(1, "%%", 1);
 }
 
 int     ft_arg_reader(const char *format, int i, va_list ap)
@@ -47,7 +41,7 @@ int     ft_arg_reader(const char *format, int i, va_list ap)
         {
             buf[j] = '\0';
             parse_struct(buf, &p);
-            distributor(buf, ap, &p);
+            distributor(ap, &p);
             return (--i);
         }
     }

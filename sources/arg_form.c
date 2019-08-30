@@ -6,20 +6,41 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 12:24:07 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/28 19:45:46 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/30 14:51:12 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void    format_str(char **s, char *tmp, t_printf *p)
+void    format_str(char **s, char *tmp, int len, t_printf *p)
 {
-	if (ZERO && MINUS)
-		ZERO = '0';
+	ZERO = '0';
+	ft_arg_mal(s, len, p);
 	if (p->prec < 0 && p->dot == 1)
 		p->prec = 0;
-	if (p->prec < (int)ft_strlen(tmp))
-		form_prec_min(s, tmp, p);
+	ft_push_arg(s, tmp, p);
+	
+}
+
+void    format_chr(char **s, t_printf *p, char c1)
+{
+	int		len;
+
+	p->prec = 0;
+	ZERO = '0';
+	printf("sss");
+	ft_arg_mal(s, 1, p);
+	len = ft_strlen(*s) - 1;
+	if (MINUS == '1' || p->width == 0)
+		*s[0] = c1;
+	else
+		*s[len] = c1;
+	
+	// printf("%s- form\n", *s);
+	// printf("%s - s\n", *s);
+    // if (p->width > (int)ft_strlen(s))
+	// 	s = form_width_minus(s, p);
+	// return (s);
 }
 
 char    *format_int(char *s, t_printf *p)
@@ -43,16 +64,6 @@ char    *format_uint(char *s, t_printf *p)
 	// 	ZERO = '0';
 	// s = form_uint_prec(s, p);
 	// if (p->width > (int)ft_strlen(s))
-	// 	s = form_width_minus(s, p);
-	return (s);
-}
-
-char    *format_chr(char *s, t_printf *p)
-{
-	p->prec = 0;
-	// if (ZERO && MINUS)
-	// 	ZERO = '0';
-    // if (p->width > (int)ft_strlen(s))
 	// 	s = form_width_minus(s, p);
 	return (s);
 }
