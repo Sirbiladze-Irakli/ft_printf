@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 18:16:42 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/30 14:27:54 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/30 18:06:52 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,13 @@ void    ft_write_arg(char *s, int len, t_printf *p)
         write(1, s, p->width);
 }
 
-
+void    ft_write_arg_c(char *s, int len, t_printf *p)
+{
+    if (p->width < len)
+        write(1, s, len);
+    else
+        write(1, s, p->width);
+}
 
 int     ft_size_modif(int len, t_printf *p)
 {

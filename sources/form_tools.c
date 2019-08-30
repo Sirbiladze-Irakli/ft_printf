@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 13:31:45 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/30 14:49:17 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/30 18:33:33 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,20 @@ void	form_zero(char **s, int size, t_printf *p)
 		*s = ft_memset(*s, 32, size);
 }
 
-// void    form_prec_max(char **s, t_printf *p)
-// {
-// 	char	*tmp;
+int		ft_size_mal(int len, t_printf *p)
+{
+	int		res;
 
-// 	tmp = *s;
-// 	tmp[p->prec] = '\0';
-// 	*s = tmp;
-// }
+	p->prec < len ? p->prec = -1 : p->prec;
+	if (len > p->prec && len > p->width)
+		res = len;
+	else if (p->prec > p->width && p->prec > len)
+		res = p->prec + 2;
+	else if ((p->width > len) && (p->width > p->prec + 2))
+		res = p->width;
+	else if (len > p->prec)
+		res = len;
+	else
+		res = p->prec + 2;
+	return (res);
+}

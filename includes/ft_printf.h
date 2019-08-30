@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/30 14:49:33 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/30 17:33:44 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,11 @@ int		modif_checker(t_printf *p, char *buf, int i);
 		/* 			sorter				*/
 		/********************************/
 
-void	sort_int_chr(char c, va_list ap, t_printf *p);
-void	sort_str_ptr(char c, va_list ap, t_printf *p);
-void	sort_oct_hex(char c, va_list ap, t_printf *p);
+void	sort_int(va_list ap, t_printf *p);
+void    sort_chr(va_list ap, t_printf *p);
+void	sort_str(va_list ap, t_printf *p);
+void	sort_ptr(va_list ap, t_printf *p);
+void	sort_oct_hex(va_list ap, t_printf *p);
 void	sort_bin(char c, va_list ap);
 
 		/********************************/
@@ -85,7 +87,7 @@ void    format_str(char **s, char *tmp, int len, t_printf *p);
 char    *format_int(char *s, t_printf *p);
 char    *format_uint(char *s, t_printf *p);
 void    format_chr(char **s, t_printf *p, char c1);
-char    *format_ptr(char *s, t_printf *p);
+void    format_ptr(char **s, char *tmp, int len, t_printf *p);
 char    *format_oct(char *s, t_printf *p);
 char    *format_hex(char *s, t_printf *p);
 
@@ -99,9 +101,11 @@ void    form_prec_min(char **s, char *tmp, t_printf *p);
 void	form_zero(char **s, int size, t_printf *p);
 void	ft_arg_mal(char **s, int len, t_printf *p);
 void    ft_write_arg(char *s, int len, t_printf *p);
+void    ft_write_arg_c(char *s, int len, t_printf *p);
 void    ft_push_arg(char **s, char *tmp, t_printf *p);
 void    ft_push_arg2(char **s, char *tmp, int size, t_printf *p);
 int     ft_size_modif(int len, t_printf *p);
+int		ft_size_mal(int len, t_printf *p);
 // void    form_prec_max(char **s, t_printf *p);
 
 		/********************************/
