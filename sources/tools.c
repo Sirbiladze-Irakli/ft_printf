@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 18:16:42 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/30 18:06:52 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/31 13:55:51 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,45 +27,16 @@ int     ft_nbrlen(unsigned long i)
     return (counter);
 }
 
-void    ft_strdup_free(char **s, char *arg, t_printf *p)
-{
-    char    *tmp;
+// void    ft_strdup_free(char **s, char *arg, t_printf *p)
+// {
+//     char    *tmp;
 
-    tmp = ft_strdup(arg);
-    *s = tmp;
-    free(tmp);
-}
+//     tmp = ft_strdup(arg);
+//     *s = tmp;
+//     free(tmp);
+// }
 
-void    ft_push_arg(char **s, char *tmp, t_printf *p)
-{
-    int     i;
-    int     len;
-    int     size;
-
-    i = -1;
-    len = ft_strlen(tmp);
-    size = ft_size_modif(len, p);
-    ft_push_arg2(s, tmp, size, p);
-}
-
-void    ft_push_arg2(char **s, char *tmp, int size, t_printf *p)
-{
-    int     i;
-    int     len;
-
-    i = -1;
-    len = ft_strlen(tmp);
-    if (p->prec == 0)
-        return ;
-    else if (p->prec > 0 && p->prec < len)
-        while(++i < p->prec)
-            (*s)[size + i] = tmp[i];
-    else
-        while(tmp[++i])
-            (*s)[size + i] = tmp[i];
-}
-
-void    ft_write_arg(char *s, int len, t_printf *p)
+void    write_arg(char *s, int len, t_printf *p)
 {
     if (p->width < len && (p->prec < 0 || p->prec > len))
         write(1, s, len);
@@ -75,7 +46,7 @@ void    ft_write_arg(char *s, int len, t_printf *p)
         write(1, s, p->width);
 }
 
-void    ft_write_arg_c(char *s, int len, t_printf *p)
+void    write_arg_c(char *s, int len, t_printf *p)
 {
     if (p->width < len)
         write(1, s, len);
@@ -83,19 +54,7 @@ void    ft_write_arg_c(char *s, int len, t_printf *p)
         write(1, s, p->width);
 }
 
-int     ft_size_modif(int len, t_printf *p)
+void    write_arg_hex_oct(char *s, int size, t_printf *p)
 {
-    int     res;
-
-    if (MINUS == '1')
-        res = 0;
-    else if ((p->width - len) > 0 && p->prec == -1)
-        res = p->width - len;
-    else if (p->width > len && p->prec > 0 && p->prec < len)
-        res = p->width - p->prec;
-    else
-        res = p->width - len;
-    if (res < 0)
-        res = 0;
-    return (res);
+    write(1, s, size);
 }

@@ -6,11 +6,15 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 13:31:45 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/30 18:33:33 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/31 14:19:26 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+	
+	/********************************/
+	/* 			cut prec			*/
+	/********************************/
 
 void    form_prec_min(char **s, char *tmp, t_printf *p)
 {
@@ -39,9 +43,13 @@ void    form_prec_min(char **s, char *tmp, t_printf *p)
 // 	ft_arg_malloc(s, len, p);
 // }
 
+	/************************************/
+	/* 		allocate memory for arg		*/
+	/************************************/
+
 void	ft_arg_mal(char **s, int len, t_printf *p)
 {
-	if (p->width > len)
+	if (p->width >= len)
 	{
 		*s = (char *)malloc(sizeof(char) * (p->width));
 		form_zero(s, p->width, p);
@@ -65,16 +73,28 @@ int		ft_size_mal(int len, t_printf *p)
 {
 	int		res;
 
-	p->prec < len ? p->prec = -1 : p->prec;
-	if (len > p->prec && len > p->width)
-		res = len;
-	else if (p->prec > p->width && p->prec > len)
+	if ((len + 2) >= p->width && (len + 2) >= (p->prec + 2))
+		res = len + 2;
+	if ((p->prec + 2) >= (len + 2) && (p->prec + 2) >= p->width)
 		res = p->prec + 2;
-	else if ((p->width > len) && (p->width > p->prec + 2))
+	if (p->width >= (len + 2) && p->width >= (p->prec + 2))
 		res = p->width;
-	else if (len > p->prec)
-		res = len;
-	else
-		res = p->prec + 2;
 	return (res);
+}
+
+int     ft_size_modif(int len, t_printf *p)
+{
+    int     res;
+
+    if (MINUS == '1')
+        res = 0;
+    else if ((p->width - len) > 0 && p->prec == -1)
+        res = p->width - len;
+    else if (p->width > len && p->prec > 0 && p->prec < len)
+        res = p->width - p->prec;
+    else
+        res = p->width - len;
+    if (res < 0)
+        res = 0;
+    return (res);
 }

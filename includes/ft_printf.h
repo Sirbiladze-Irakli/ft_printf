@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/30 17:33:44 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/31 18:15:07 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	sort_bin(char c, va_list ap);
 		/********************************/
 
 void    format_str(char **s, char *tmp, int len, t_printf *p);
-char    *format_int(char *s, t_printf *p);
+void    format_int(char **s, char *tmp, int len, t_printf *p);
 char    *format_uint(char *s, t_printf *p);
 void    format_chr(char **s, t_printf *p, char c1);
 void    format_ptr(char **s, char *tmp, int len, t_printf *p);
@@ -100,12 +100,17 @@ void    form_prec_min(char **s, char *tmp, t_printf *p);
 // void	form_width_char(char **s, int len, char c1, t_printf *p);
 void	form_zero(char **s, int size, t_printf *p);
 void	ft_arg_mal(char **s, int len, t_printf *p);
-void    ft_write_arg(char *s, int len, t_printf *p);
-void    ft_write_arg_c(char *s, int len, t_printf *p);
 void    ft_push_arg(char **s, char *tmp, t_printf *p);
 void    ft_push_arg2(char **s, char *tmp, int size, t_printf *p);
+void    push_arg_hex_oct(char **s, char *tmp, int len, t_printf *p);
+void	push_hash(char **s, int calibr, int len, t_printf *p);
+int     push_zero(char **s, int calibr, int len, t_printf *p);
+void    cut_zero(char **s, int len, t_printf *p);
+char	*whats_hash(t_printf *p);
+int		calibration_of_prec(int len, t_printf *p);
 int     ft_size_modif(int len, t_printf *p);
 int		ft_size_mal(int len, t_printf *p);
+
 // void    form_prec_max(char **s, t_printf *p);
 
 		/********************************/
@@ -113,6 +118,9 @@ int		ft_size_mal(int len, t_printf *p);
 		/********************************/
 
 int     ft_nbrlen(unsigned long i);
+void    write_arg(char *s, int len, t_printf *p);
+void    write_arg_c(char *s, int len, t_printf *p);
+void    write_arg_hex_oct(char *s, int size, t_printf *p);
 void    ft_strdup_free(char **s, char *arg, t_printf *p);
 void	ft_strsub_free(char **s, char *tmp, t_printf *p);
 

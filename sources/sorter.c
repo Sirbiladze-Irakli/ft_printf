@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/30 18:36:24 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/08/31 18:20:47 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 void    sort_int(va_list ap, t_printf *p)
 {
+	int		len;
 	char    *s;
+	char	*tmp;
 
-	if(p->specifier == 'd' || p->specifier == 'i')
-	{
-		s = ft_itoa(va_arg(ap, int));
-		s = format_int(s, p);
-		write(1, s, ft_strlen(s));
-	}
-	if(p->specifier == 'u')
-	{
-		s = ft_itoa(va_arg(ap, unsigned long));
-		write(1, s, ft_strlen(s));
-	}
+	HASH = '0';
+	tmp = ft_itoa(va_arg(ap, int));
+	len = ft_strlen(tmp);
+	if (PLUS == '1' || SPACE == '1')
+		len++;
+	format_int(&s, tmp, len, p);
+	// write_arg(s, len, p);
+	// if(p->specifier == 'u')
+	// {
+	// 	s = ft_itoa(va_arg(ap, unsigned long));
+	// 	write(1, s, ft_strlen(s));
+	// }
 	free (s);
 }
 
@@ -43,7 +46,7 @@ void    sort_chr(va_list ap, t_printf *p)
 		s[0] = c1;
 	else
 		s[p->width - len] = c1;
-	ft_write_arg_c(s, len, p);
+	write_arg_c(s, len, p);
 	free (s);
 }
 
@@ -56,7 +59,7 @@ void	sort_str(va_list ap, t_printf *p)
 	tmp = va_arg(ap, char *);
 	len = ft_strlen(tmp);
 	format_str(&s, tmp, len, p);
-	ft_write_arg(s, len, p);
+	write_arg(s, len, p);
 	free (s);
 }
 
@@ -65,13 +68,14 @@ void	sort_ptr(va_list ap, t_printf *p)
     void	*ptr;
 	char	*tmp;
 	char	*s;
+	char	*z;
 	int		len;
 
+	z = "0";
 	ptr = va_arg(ap, void *);
 	tmp = ft_itoa_base_c((unsigned long long)ptr, 16, p->specifier);
-	len = ft_strlen(tmp) + 2;
+	len = ft_strlen(tmp);
 	format_ptr(&s, tmp, len, p);
-	// ft_write_arg(s, len, p);
 	free (s);
 }
 
