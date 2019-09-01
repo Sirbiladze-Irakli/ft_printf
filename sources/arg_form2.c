@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:48:48 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 16:24:49 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/01 17:06:40 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void    format_int(char **s, char *tmp, int len, t_printf *p)
 	if (p->prec > len)
 		size = p->prec - len;
 	ft_arg_mal(s, len + size, p);
+	// printf("%s| - s\n", *s);
 	push_arg_int(s, tmp, len, p);
 	// printf("%s| - s\n", *s);
 	// push_arg_hex_oct(s, tmp, len, p);

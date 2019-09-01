@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 18:29:10 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 16:31:25 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/01 17:34:53 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int     main()
 	// long int c = 123412343;
     // long double   a = 123.123;
     // int     a[4] = {1, 2, 3, 4};
-	// char    b = '&';
+	char    b = '&';
 	// char    c = ~b + 1;
 	
     // printf("Le fichier{cyan}%s{eoc} contient : {red}%s{eoc}", "fasdf", "asfd");
@@ -27,9 +27,11 @@ int     main()
 	/* 			test - hex 			*/
 	/********************************/
 
+	printf("\033[1;36m");
 	printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
 	printf("====================== hex ======================\n", &i);
 	printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
+	printf("\033[0m\n");	
 	
 	ft_printf("01)|%X| - My 'X'\n", i);
     printf("01)|%X| - Orig 'X'\n\n", i);
@@ -100,135 +102,141 @@ int     main()
 	/********************************/
 	/* 			test - str 			*/
 	/********************************/
+	
+	printf("\033[1;36m");
+	printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
+	printf("====================== str ======================\n", &i);
+	printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
+	printf("\033[0m\n");	
+	
+	ft_printf("01)|%s| - My 's'\n", "qwerty");
+    printf("01)|%s| - Orig 's'\n\n", "qwerty");
 
-	// printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
-	// printf("====================== str ======================\n", &i);
-	// printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
+    ft_printf("02)|% s| - My 's'\n", "qwerty");
+    printf("02)|% s| - Orig 's'\n\n", "qwerty");
 	
-	// ft_printf("01)|%s| - My 's'\n", "qwerty");
-    // printf("01)|%s| - Orig 's'\n\n", "qwerty");
+	ft_printf("03)|%10s| - My 's'\n", "qwerty");
+    printf("03)|%10s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("04)|%-10s| - My 's'\n", "qwerty");
+    printf("04)|%-10s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("05)|%15.0s| - My 's'\n", "qwerty");
+    printf("05)|%15.0s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("06)|%13.4s| - My 's'\n", "qwerty");
+    printf("06)|%13.4s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("07)|%#15.10s| - My 's'\n", "qwerty");
+    printf("07)|%#15.10s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("08)|%#-15.s| - My 's'\n", "qwerty");
+    printf("08)|%#-15.s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("09)|%#-15.4s| - My 's'\n", "qwerty");
+    printf("09)|%#-15.4s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("10)|%#-15.10s| - My 's'\n", "qwerty");
+    printf("10)|%#-15.10s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("11)|%#- 15.s| - My 's'\n", "qwerty");
+    printf("11)|%#- 15.s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("12)|%#-0 15.6s| - My 's'\n", "qwerty");
+    printf("12)|%#-0 15.6s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("13)|%-+s| - My 's'\n", "qwerty");
+    printf("13)|%-+s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("14)|%#-.13s| - My 's'\n", "qwerty");
+    printf("14)|%#-.13s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("15)|%-.4s| - My 's'\n", "qwerty");
+    printf("15)|%-.4s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("16)|%.13s| - My 's'\n", "qwerty");
+    printf("16)|%.13s| - Orig 's'\n\n", "qwerty");
+	
+	ft_printf("17)|%.4s| - My 's'\n", "qwerty");
+    printf("17)|%.4s| - Orig 's'\n\n", "qwerty");
 
-    // ft_printf("02)|% s| - My 's'\n", "qwerty");
-    // printf("02)|% s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("03)|%10s| - My 's'\n", "qwerty");
-    // printf("03)|%10s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("04)|%-10s| - My 's'\n", "qwerty");
-    // printf("04)|%-10s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("05)|%15.0s| - My 's'\n", "qwerty");
-    // printf("05)|%15.0s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("06)|%13.4s| - My 's'\n", "qwerty");
-    // printf("06)|%13.4s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("07)|%#15.10s| - My 's'\n", "qwerty");
-    // printf("07)|%#15.10s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("08)|%#-15.s| - My 's'\n", "qwerty");
-    // printf("08)|%#-15.s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("09)|%#-15.4s| - My 's'\n", "qwerty");
-    // printf("09)|%#-15.4s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("10)|%#-15.10s| - My 's'\n", "qwerty");
-    // printf("10)|%#-15.10s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("11)|%#- 15.s| - My 's'\n", "qwerty");
-    // printf("11)|%#- 15.s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("12)|%#-0 15.6s| - My 's'\n", "qwerty");
-    // printf("12)|%#-0 15.6s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("13)|%-+s| - My 's'\n", "qwerty");
-    // printf("13)|%-+s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("14)|%#-.13s| - My 's'\n", "qwerty");
-    // printf("14)|%#-.13s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("15)|%-.4s| - My 's'\n", "qwerty");
-    // printf("15)|%-.4s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("16)|%.13s| - My 's'\n", "qwerty");
-    // printf("16)|%.13s| - Orig 's'\n\n", "qwerty");
-	
-	// ft_printf("17)|%.4s| - My 's'\n", "qwerty");
-    // printf("17)|%.4s| - Orig 's'\n\n", "qwerty");
-
-	// ft_printf("18)|%4s| - My 's'\n", "qwerty");
-    // printf("18)|%4s| - Orig 's'\n\n", "qwerty");
+	ft_printf("18)|%4s| - My 's'\n", "qwerty");
+    printf("18)|%4s| - Orig 's'\n\n", "qwerty");
 
 	/********************************/
 	/* 			test - char			*/
 	/********************************/
+	
+	printf("\033[1;36m");
+	printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
+	printf("====================== chr ======================\n", &i);
+	printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
+	printf("\033[0m\n");
+	
+	ft_printf("01)|%c| - My 'c'\n", 'a');
+    printf("01)|%c| - Orig 'c'\n\n", 'a');
 
-	// printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
-	// printf("====================== chr ======================\n", &i);
-	// printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
+    ft_printf("02)|% c| - My 'c'\n", 'a');
+    printf("02)|% c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("03)|%15c| - My 'c'\n", 'a');
+    printf("03)|%15c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("04)|%-10c| - My 'c'\n", &b);
+    printf("04)|%-10c| - Orig 'c'\n\n", &b);
+	
+	ft_printf("05)|%15.0c| - My 'c'\n", 'a');
+    printf("05)|%15.0c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("06)|%13.4c| - My 'c'\n", 'a');
+    printf("06)|%13.4c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("07)|%#15.10c| - My 'c'\n", 'a');
+    printf("07)|%#15.10c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("08)|%#-15.c| - My 'c'\n", 'a');
+    printf("08)|%#-15.c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("09)|%#-15.4c| - My 'c'\n", 'a');
+    printf("09)|%#-15.4c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("10)|%#-15.10c| - My 'c'\n", 'a');
+    printf("10)|%#-15.10c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("11)|%#- 15.c| - My 'c'\n", 'a');
+    printf("11)|%#- 15.c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("12)|%#-0 15.6c| - My 'c'\n", 'a');
+    printf("12)|%#-0 15.6c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("13)|%-+c| - My 'c'\n", 'a');
+    printf("13)|%-+c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("14)|%#-.13c| - My 'c'\n", 'a');
+    printf("14)|%#-.13c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("15)|%-.4c| - My 'c'\n", 'a');
+    printf("15)|%-.4c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("16)|%.13c| - My 'c'\n", 'a');
+    printf("16)|%.13c| - Orig 'c'\n\n", 'a');
+	
+	ft_printf("17)|%.4c| - My 'c'\n", 'a');
+    printf("17)|%.4c| - Orig 'c'\n\n", 'a');
 
-	// ft_printf("01)|%c| - My 'c'\n", 'a');
-    // printf("01)|%c| - Orig 'c'\n\n", 'a');
-
-    // ft_printf("02)|% c| - My 'c'\n", 'a');
-    // printf("02)|% c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("03)|%15c| - My 'c'\n", 'a');
-    // printf("03)|%15c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("04)|%-10c| - My 'c'\n", 'a');
-    // printf("04)|%-10c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("05)|%15.0c| - My 'c'\n", 'a');
-    // printf("05)|%15.0c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("06)|%13.4c| - My 'c'\n", 'a');
-    // printf("06)|%13.4c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("07)|%#15.10c| - My 'c'\n", 'a');
-    // printf("07)|%#15.10c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("08)|%#-15.c| - My 'c'\n", 'a');
-    // printf("08)|%#-15.c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("09)|%#-15.4c| - My 'c'\n", 'a');
-    // printf("09)|%#-15.4c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("10)|%#-15.10c| - My 'c'\n", 'a');
-    // printf("10)|%#-15.10c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("11)|%#- 15.c| - My 'c'\n", 'a');
-    // printf("11)|%#- 15.c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("12)|%#-0 15.6c| - My 'c'\n", 'a');
-    // printf("12)|%#-0 15.6c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("13)|%-+c| - My 'c'\n", 'a');
-    // printf("13)|%-+c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("14)|%#-.13c| - My 'c'\n", 'a');
-    // printf("14)|%#-.13c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("15)|%-.4c| - My 'c'\n", 'a');
-    // printf("15)|%-.4c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("16)|%.13c| - My 'c'\n", 'a');
-    // printf("16)|%.13c| - Orig 'c'\n\n", 'a');
-	
-	// ft_printf("17)|%.4c| - My 'c'\n", 'a');
-    // printf("17)|%.4c| - Orig 'c'\n\n", 'a');
-
-	// ft_printf("18)|%4c| - My 'c'\n", 'a');
-    // printf("18)|%4c| - Orig 'c'\n\n", 'a');
+	ft_printf("18)|%4c| - My 'c'\n", 'a');
+    printf("18)|%4c| - Orig 'c'\n\n", 'a');
 
 	/********************************/
 	/* 			test - int			*/
 	/********************************/
-
+	
+	printf("\033[1;36m");
 	printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
 	printf("====================== int ======================\n", &i);
 	printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
-
+	printf("\033[0m\n");
+	
 	ft_printf("01)|%d| - My 'di'\n", 2147483647);
     printf("01)|%d| - Orig 'di'\n\n", 2147483647);
 
@@ -304,14 +312,16 @@ int     main()
 	ft_printf("25)|% 14.14d| - My 'di'\n", &i);
     printf("25)|% 14.14d| - Orig 'di'\n\n", &i);
 
-	/********************************/
-	/* 		test - unsigned			*/
-	/********************************/
-
+	// /********************************/
+	// /* 		test - unsigned			*/
+	// /********************************/
+	
+	// printf("\033[1;36m");
 	// printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
 	// printf("=================== unsigned ====================\n", &i);
 	// printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
-
+	// printf("\033[0m\n");
+	
 	// ft_printf("01)|%u| - My 'u'\n", 2147483647);
     // printf("01)|%u| - Orig 'u'\n\n", 2147483647);
 
@@ -387,13 +397,15 @@ int     main()
 	// ft_printf("25)|% 14.14u| - My 'u'\n", &i);
     // printf("25)|% 14.14u| - Orig 'u'\n\n", &i);
 
-	/********************************/
-	/* 			test - ptr			*/
-	/********************************/
-
+	// /********************************/
+	// /* 			test - ptr			*/
+	// /********************************/
+	
+	// printf("\033[1;36m");
 	// printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
 	// printf("====================== ptr ======================\n", &i);
 	// printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
+	// printf("\033[0m\n");	
 	
 	// ft_printf("01)|%p| - My 'p'\n", &i);
     // printf("01)|%p| - Orig 'p'\n\n", &i);
@@ -470,13 +482,15 @@ int     main()
 	// ft_printf("25)|%#-0 28.1p| - My 'p'\n", -1);
     // printf("25)|%#-0 28.1p| - Orig 'p'\n\n", -1);
 
-	/********************************/
-	/* 			test - oct			*/
-	/********************************/
+	// /********************************/
+	// /* 			test - oct			*/
+	// /********************************/
 
-	// printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
-	// printf("====================== oct ======================\n", &i);
-	// printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
+	printf("\033[1;36m");
+	printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
+	printf("====================== oct ======================\n", &i);
+	printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n", &i);
+	printf("\033[0m\n");
 	
 	// ft_printf("01)|%0o| - My 'o'\n", 2147483647);
     // printf("01)|%0o| - Orig 'o'\n\n", 2147483647);
