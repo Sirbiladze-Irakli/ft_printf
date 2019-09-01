@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 15:53:58 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 14:33:55 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/01 17:01:26 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,19 @@ void    cut_zero(char **s, int len, t_printf *p)
 	}
 	while (i < p->width)
 		(*s)[i++] = ' ';
+}
+
+void    push_arg_int(char **s, char *tmp, int len, t_printf *p)
+{
+	int		i;
+	int		calibr;
+
+	i = -1;
+	calibr = calibration_of_prec(len, p);
+	if (PLUS == '1' || SPACE == '1')
+		calibr = fill_plus_or_space(s, calibr, p);
+	calibr = push_zero(s, calibr, len, p);
+	while(tmp[++i])
+		(*s)[calibr + i] = tmp[i];
+	// printf("%s - s\n", *s);
 }

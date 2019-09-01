@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 18:29:10 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 14:29:25 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/01 16:31:25 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int     main()
 	ft_printf("04)|%-20x| - My 'x'\n", i);
     printf("04)|%-20x| - Orig 'x'\n\n", i);
 	
-	ft_printf("05)|%20.0x| - My 'x'\n", i);
-    printf("05)|%20.0x| - Orig 'x'\n\n", i);
+	ft_printf("05)|%20.0x| - My 'x'\n", &i);
+    printf("05)|%20.0x| - Orig 'x'\n\n", &i);
 	
 	ft_printf("06)|%27.4X| - My 'X'\n", i);
     printf("06)|%27.4X| - Orig 'X'\n\n", i);
 	
-	ft_printf("07)|%#24.10x| - My 'x'\n", i);
-    printf("07)|%#24.10x| - Orig 'x'\n\n", i);
+	ft_printf("07)|%#24.10x| - My 'x'\n", &i);
+    printf("07)|%#24.10x| - Orig 'x'\n\n", &i);
 	
 	ft_printf("08)|%#-25.x| - My 'x'\n", i);
     printf("08)|%#-25.x| - Orig 'x'\n\n", i);
@@ -225,244 +225,333 @@ int     main()
 	/* 			test - int			*/
 	/********************************/
 
+	printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
+	printf("====================== int ======================\n", &i);
+	printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
+
+	ft_printf("01)|%d| - My 'di'\n", 2147483647);
+    printf("01)|%d| - Orig 'di'\n\n", 2147483647);
+
+    ft_printf("02)|% d| - My 'di'\n", 2147483647);
+    printf("02)|% d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("03)|%10d| - My 'di'\n", 2147483647);
+    printf("03)|%10d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("04)|%-10d| - My 'di'\n", 2147483647);
+    printf("04)|%-10d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("05)|%15.0d| - My 'di'\n", 2147483647);
+    printf("05)|%15.0d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("06)|%13.4d| - My 'di'\n", 2147483647);
+    printf("06)|%13.4d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("07)|%#15.10d| - My 'di'\n", 2147483647);
+    printf("07)|%#15.10d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("08)|%#-15.d| - My 'di'\n", 2147483647);
+    printf("08)|%#-15.d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("09)|%#-15.4d| - My 'di'\n", 2147483647);
+    printf("09)|%#-15.4d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("10)|%#-15.10d| - My 'di'\n", 2147483647);
+    printf("10)|%#-15.10d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("11)|%#- 15.d| - My 'di'\n", 2147483647);
+    printf("11)|%#- 15.d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("12)|%#-0 15.6d| - My 'di'\n", 2147483647);
+    printf("12)|%#-0 15.6d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("13)|%-+d| - My 'di'\n", 2147483647);
+    printf("13)|%-+d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("14)|%#-.13d| - My 'di'\n", 2147483647);
+    printf("14)|%#-.13d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("15)|%-.4d| - My 'di'\n", 2147483647);
+    printf("15)|%-.4d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("16)|%.13d| - My 'di'\n", 2147483647);
+    printf("16)|%.13d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("17)|%.4d| - My 'di'\n", 2147483647);
+    printf("17)|%.4d| - Orig 'di'\n\n", 2147483647);
+
+	ft_printf("18)|%4d| - My 'di'\n", 2147483647);
+    printf("18)|%4d| - Orig 'di'\n\n", 2147483647);
+	
+	ft_printf("19)|%0.30d| - My 'di'\n", &i);
+    printf("19)|%0.30d| - Orig 'di'\n\n", &i);
+
+	ft_printf("20)|%013.12d| - My 'di'\n", &i);
+    printf("20)|%013.12d| - Orig 'di'\n\n", &i);
+
+	ft_printf("21)|%14.13d| - My 'di'\n", &i);
+    printf("21)|%14.13d| - Orig 'di'\n\n", &i);
+
+	ft_printf("22)|%+ 14.14d| - My 'di'\n", &i);
+    printf("22)|%+ 14.14d| - Orig 'di'\n\n", &i);
+
+	ft_printf("23)|%14.14 32.23d| - My 'di'\n", &i);
+    printf("23)|%14.14 32.23d| - Orig 'di'\n\n", &i);
+
+	ft_printf("24)|%#-0 28.1d| - My 'di'\n", &i);
+    printf("24)|%#-0 28.1d| - Orig 'di'\n\n", &i);
+
+	ft_printf("25)|% 14.14d| - My 'di'\n", &i);
+    printf("25)|% 14.14d| - Orig 'di'\n\n", &i);
+
+	/********************************/
+	/* 		test - unsigned			*/
+	/********************************/
+
 	// printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
-	// printf("====================== int ======================\n", &i);
+	// printf("=================== unsigned ====================\n", &i);
 	// printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
 
-	// ft_printf("01)|%d| - My 'di'\n", 2147483647);
-    // printf("01)|%d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("01)|%u| - My 'u'\n", 2147483647);
+    // printf("01)|%u| - Orig 'u'\n\n", 2147483647);
 
-    // ft_printf("02)|% d| - My 'di'\n", 2147483647);
-    // printf("02)|% d| - Orig 'di'\n\n", 2147483647);
+    // ft_printf("02)|% u| - My 'u'\n", 2147483647);
+    // printf("02)|% u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("03)|%10d| - My 'di'\n", 2147483647);
-    // printf("03)|%10d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("03)|%10u| - My 'u'\n", 2147483647);
+    // printf("03)|%10u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("04)|%-10d| - My 'di'\n", 2147483647);
-    // printf("04)|%-10d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("04)|%-10u| - My 'u'\n", 2147483647);
+    // printf("04)|%-10u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("05)|%15.0d| - My 'di'\n", 2147483647);
-    // printf("05)|%15.0d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("05)|%15.0u| - My 'u'\n", 2147483647);
+    // printf("05)|%15.0u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("06)|%13.4d| - My 'di'\n", 2147483647);
-    // printf("06)|%13.4d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("06)|%13.4u| - My 'u'\n", 2147483647);
+    // printf("06)|%13.4u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("07)|%#15.10d| - My 'di'\n", 2147483647);
-    // printf("07)|%#15.10d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("07)|%#15.10u| - My 'u'\n", 2147483647);
+    // printf("07)|%#15.10u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("08)|%#-15.d| - My 'di'\n", 2147483647);
-    // printf("08)|%#-15.d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("08)|%#-15.u| - My 'u'\n", 2147483647);
+    // printf("08)|%#-15.u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("09)|%#-15.4d| - My 'di'\n", 2147483647);
-    // printf("09)|%#-15.4d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("09)|%#-15.4u| - My 'u'\n", 2147483647);
+    // printf("09)|%#-15.4u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("10)|%#-15.10d| - My 'di'\n", 2147483647);
-    // printf("10)|%#-15.10d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("10)|%#-15.10u| - My 'u'\n", 2147483647);
+    // printf("10)|%#-15.10u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("11)|%#- 15.d| - My 'di'\n", 2147483647);
-    // printf("11)|%#- 15.d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("11)|%#- 15.u| - My 'u'\n", 2147483647);
+    // printf("11)|%#- 15.u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("12)|%#-0 15.6d| - My 'di'\n", 2147483647);
-    // printf("12)|%#-0 15.6d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("12)|%#-0 15.6u| - My 'u'\n", 2147483647);
+    // printf("12)|%#-0 15.6u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("13)|%-+d| - My 'di'\n", 2147483647);
-    // printf("13)|%-+d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("13)|%-+u| - My 'u'\n", 2147483647);
+    // printf("13)|%-+u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("14)|%#-.13d| - My 'di'\n", 2147483647);
-    // printf("14)|%#-.13d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("14)|%#-.13u| - My 'u'\n", 2147483647);
+    // printf("14)|%#-.13u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("15)|%-.4d| - My 'di'\n", 2147483647);
-    // printf("15)|%-.4d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("15)|%-.4u| - My 'u'\n", 2147483647);
+    // printf("15)|%-.4u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("16)|%.13d| - My 'di'\n", 2147483647);
-    // printf("16)|%.13d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("16)|%.13u| - My 'u'\n", 2147483647);
+    // printf("16)|%.13u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("17)|%.4d| - My 'di'\n", 2147483647);
-    // printf("17)|%.4d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("17)|%.4u| - My 'u'\n", 2147483647);
+    // printf("17)|%.4u| - Orig 'u'\n\n", 2147483647);
 
-	// ft_printf("18)|%4d| - My 'di'\n", 2147483647);
-    // printf("18)|%4d| - Orig 'di'\n\n", 2147483647);
+	// ft_printf("18)|%4u| - My 'u'\n", 2147483647);
+    // printf("18)|%4u| - Orig 'u'\n\n", 2147483647);
 	
-	// ft_printf("19)|%0.30d| - My 'p'\n", &i);
-    // printf("19)|%0.30d| - Orig 'p'\n\n", &i);
+	// ft_printf("19)|%0.30u| - My 'u'\n", &i);
+    // printf("19)|%0.30u| - Orig 'u'\n\n", &i);
 
-	// ft_printf("20)|%013.12d| - My 'p'\n", &i);
-    // printf("20)|%013.12d| - Orig 'p'\n\n", &i);
+	// ft_printf("20)|%013.12u| - My 'u'\n", &i);
+    // printf("20)|%013.12u| - Orig 'u'\n\n", &i);
 
-	// ft_printf("21)|%14.13d| - My 'p'\n", &i);
-    // printf("21)|%14.13d| - Orig 'p'\n\n", &i);
+	// ft_printf("21)|%14.13u| - My 'u'\n", &i);
+    // printf("21)|%14.13u| - Orig 'u'\n\n", &i);
 
-	// ft_printf("22)|%14.14d| - My 'p'\n", &i);
-    // printf("22)|%14.14d| - Orig 'p'\n\n", &i);
+	// ft_printf("22)|%+ 14.14u| - My 'u'\n", &i);
+    // printf("22)|%+ 14.14u| - Orig 'u'\n\n", &i);
 
-	// ft_printf("23)|%14.14 32.23d| - My 'p'\n", &i);
-    // printf("23)|%14.14 32.23d| - Orig 'p'\n\n", &i);
+	// ft_printf("23)|%14.14 32.23u| - My 'u'\n", &i);
+    // printf("23)|%14.14 32.23u| - Orig 'u'\n\n", &i);
 
-	// ft_printf("24)|%#-0 28.1d| - My 'p'\n", &i);
-    // printf("24)|%#-0 28.1d| - Orig 'p'\n\n", &i);
+	// ft_printf("24)|%#-0 28.1u| - My 'u'\n", &i);
+    // printf("24)|%#-0 28.1u| - Orig 'u'\n\n", &i);
+
+	// ft_printf("25)|% 14.14u| - My 'u'\n", &i);
+    // printf("25)|% 14.14u| - Orig 'u'\n\n", &i);
 
 	/********************************/
 	/* 			test - ptr			*/
 	/********************************/
 
-	printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
-	printf("====================== ptr ======================\n", &i);
-	printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
+	// printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
+	// printf("====================== ptr ======================\n", &i);
+	// printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
 	
-	ft_printf("01)|%p| - My 'p'\n", &i);
-    printf("01)|%p| - Orig 'p'\n\n", &i);
+	// ft_printf("01)|%p| - My 'p'\n", &i);
+    // printf("01)|%p| - Orig 'p'\n\n", &i);
 
-    ft_printf("02)|% p| - My 'p'\n", &i);
-    printf("02)|% p| - Orig 'p'\n\n", &i);
+    // ft_printf("02)|% p| - My 'p'\n", &i);
+    // printf("02)|% p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("03)|%20p| - My 'p'\n", &i);
-    printf("03)|%20p| - Orig 'p'\n\n", &i);
+	// ft_printf("03)|%20p| - My 'p'\n", &i);
+    // printf("03)|%20p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("04)|%-20p| - My 'p'\n", &i);
-    printf("04)|%-20p| - Orig 'p'\n\n", &i);
+	// ft_printf("04)|%-20p| - My 'p'\n", &i);
+    // printf("04)|%-20p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("05)|%20.0p| - My 'p'\n", &i);
-    printf("05)|%20.0p| - Orig 'p'\n\n", &i);
+	// ft_printf("05)|%20.0p| - My 'p'\n", &i);
+    // printf("05)|%20.0p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("06)|%27.4p| - My 'p'\n", &i);
-    printf("06)|%27.4p| - Orig 'p'\n\n", &i);
+	// ft_printf("06)|%27.4p| - My 'p'\n", &i);
+    // printf("06)|%27.4p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("07)|%#24.10p| - My 'p'\n", &i);
-    printf("07)|%#24.10p| - Orig 'p'\n\n", &i);
+	// ft_printf("07)|%#24.10p| - My 'p'\n", &i);
+    // printf("07)|%#24.10p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("08)|%#-25.p| - My 'p'\n", &i);
-    printf("08)|%#-25.p| - Orig 'p'\n\n", &i);
+	// ft_printf("08)|%#-25.p| - My 'p'\n", &i);
+    // printf("08)|%#-25.p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("09)|%#24.14p| - My 'p'\n", &i);
-    printf("09)|%#24.14p| - Orig 'p'\n\n", &i);
+	// ft_printf("09)|%#24.14p| - My 'p'\n", &i);
+    // printf("09)|%#24.14p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("10)|%#-26.10p| - My 'p'\n", &i);
-    printf("10)|%#-26.10p| - Orig 'p'\n\n", &i);
+	// ft_printf("10)|%#-26.10p| - My 'p'\n", &i);
+    // printf("10)|%#-26.10p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("11)|%#- 26.p| - My 'p'\n", &i);
-    printf("11)|%#- 26.p| - Orig 'p'\n\n", &i);
+	// ft_printf("11)|%#- 26.p| - My 'p'\n", &i);
+    // printf("11)|%#- 26.p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("12)|%#-0 28.16p| - My 'p'\n", &i);
-    printf("12)|%#-0 28.16p| - Orig 'p'\n\n", &i);
+	// ft_printf("12)|%#-0 28.16p| - My 'p'\n", &i);
+    // printf("12)|%#-0 28.16p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("13)|%-+p| - My 'p'\n", &i);
-    printf("13)|%-+p| - Orig 'p'\n\n", &i);
+	// ft_printf("13)|%-+p| - My 'p'\n", &i);
+    // printf("13)|%-+p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("14)|%#-.26p| - My 'p'\n", &i);
-    printf("14)|%#-.26p| - Orig 'p'\n\n", &i);
+	// ft_printf("14)|%#-.26p| - My 'p'\n", &i);
+    // printf("14)|%#-.26p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("15)|%-.4p| - My 'p'\n", &i);
-    printf("15)|%-.4p| - Orig 'p'\n\n", &i);
+	// ft_printf("15)|%-.4p| - My 'p'\n", &i);
+    // printf("15)|%-.4p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("16)|%.16p| - My 'p'\n", &i);
-    printf("16)|%.16p| - Orig 'p'\n\n", &i);
+	// ft_printf("16)|%.16p| - My 'p'\n", &i);
+    // printf("16)|%.16p| - Orig 'p'\n\n", &i);
 	
-	ft_printf("17)|%.4p| - My 'p'\n", &i);
-    printf("17)|%.4p| - Orig 'p'\n\n", &i);
+	// ft_printf("17)|%.4p| - My 'p'\n", &i);
+    // printf("17)|%.4p| - Orig 'p'\n\n", &i);
 
-	ft_printf("18)|%030p| - My 'p'\n", &i);
-    printf("18)|%030p| - Orig 'p'\n\n", &i);
+	// ft_printf("18)|%030p| - My 'p'\n", &i);
+    // printf("18)|%030p| - Orig 'p'\n\n", &i);
 
-	ft_printf("19)|%0.30p| - My 'p'\n", &i);
-    printf("19)|%0.30p| - Orig 'p'\n\n", &i);
+	// ft_printf("19)|%0.30p| - My 'p'\n", &i);
+    // printf("19)|%0.30p| - Orig 'p'\n\n", &i);
 
-	ft_printf("20)|%13.12p| - My 'p'\n", &i);
-    printf("20)|%13.12p| - Orig 'p'\n\n", &i);
+	// ft_printf("20)|%13.12p| - My 'p'\n", &i);
+    // printf("20)|%13.12p| - Orig 'p'\n\n", &i);
 
-	ft_printf("21)|%14.13p| - My 'p'\n", &i);
-    printf("21)|%14.13p| - Orig 'p'\n\n", &i);
+	// ft_printf("21)|%14.13p| - My 'p'\n", &i);
+    // printf("21)|%14.13p| - Orig 'p'\n\n", &i);
 
-	ft_printf("22)|%14.14p| - My 'p'\n", &i);
-    printf("22)|%14.14p| - Orig 'p'\n\n", &i);
+	// ft_printf("22)|%14.14p| - My 'p'\n", &i);
+    // printf("22)|%14.14p| - Orig 'p'\n\n", &i);
 
-	ft_printf("23)|%14.14 32.23p| - My 'p'\n", &i);
-    printf("23)|%14.14 32.23p| - Orig 'p'\n\n", &i);
+	// ft_printf("23)|%14.14 32.23p| - My 'p'\n", &i);
+    // printf("23)|%14.14 32.23p| - Orig 'p'\n\n", &i);
 
-	ft_printf("24)|%#-0 28.1p| - My 'p'\n", &i);
-    printf("24)|%#-0 28.1p| - Orig 'p'\n\n", &i);
+	// ft_printf("24)|%#-0 28.1p| - My 'p'\n", &i);
+    // printf("24)|%#-0 28.1p| - Orig 'p'\n\n", &i);
+
+	// ft_printf("25)|%#-0 28.1p| - My 'p'\n", -1);
+    // printf("25)|%#-0 28.1p| - Orig 'p'\n\n", -1);
 
 	/********************************/
 	/* 			test - oct			*/
 	/********************************/
 
-	printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
-	printf("====================== oct ======================\n", &i);
-	printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
+	// printf("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||\n", &i);
+	// printf("====================== oct ======================\n", &i);
+	// printf("|||||||||||||||||||||||||||||||||||||||||||||||||\n\n\n\n", &i);
 	
-	ft_printf("01)|%0o| - My 'o'\n", 2147483647);
-    printf("01)|%0o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("01)|%0o| - My 'o'\n", 2147483647);
+    // printf("01)|%0o| - Orig 'o'\n\n", 2147483647);
 
-    ft_printf("02)|% o| - My 'o'\n", 2147483647);
-    printf("02)|% o| - Orig 'o'\n\n", 2147483647);
+    // ft_printf("02)|% o| - My 'o'\n", 2147483647);
+    // printf("02)|% o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("03)|%20o| - My 'o'\n", 2147483647);
-    printf("03)|%20o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("03)|%20o| - My 'o'\n", 2147483647);
+    // printf("03)|%20o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("04)|%-20o| - My 'o'\n", 2147483647);
-    printf("04)|%-20o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("04)|%-20o| - My 'o'\n", 2147483647);
+    // printf("04)|%-20o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("05)|%20.0o| - My 'o'\n", 2147483647);
-    printf("05)|%20.0o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("05)|%20.0o| - My 'o'\n", 2147483647);
+    // printf("05)|%20.0o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("06)|%27.4o| - My 'o'\n", 2147483647);
-    printf("06)|%27.4o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("06)|%27.4o| - My 'o'\n", 2147483647);
+    // printf("06)|%27.4o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("07)|%#24.10o| - My 'o'\n", 2147483647);
-    printf("07)|%#24.10o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("07)|%#24.10o| - My 'o'\n", 2147483647);
+    // printf("07)|%#24.10o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("08)|%#-25.o| - My 'o'\n", 2147483647);
-    printf("08)|%#-25.o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("08)|%#-25.o| - My 'o'\n", &i);
+    // printf("08)|%#-25.o| - Orig 'o'\n\n", &i);
 	
-	ft_printf("09)|%#24.14o| - My 'o'\n", 2147483647);
-    printf("09)|%#24.14o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("09)|%#24.14o| - My 'o'\n", 2147483647);
+    // printf("09)|%#24.14o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("10)|%#-26.10o| - My 'o'\n", 2147483647);
-    printf("10)|%#-26.10o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("10)|%#-26.10o| - My 'o'\n", 2147483647);
+    // printf("10)|%#-26.10o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("11)|%#- 26.o| - My 'o'\n", 2147483647);
-    printf("11)|%#- 26.o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("11)|%#- 26.o| - My 'o'\n", 2147483647);
+    // printf("11)|%#- 26.o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("12)|%#-0 28.16o| - My 'o'\n", 2147483647);
-    printf("12)|%#-0 28.16o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("12)|%#-0 28.16o| - My 'o'\n", 2147483647);
+    // printf("12)|%#-0 28.16o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("13)|%-+o| - My 'o'\n", 2147483647);
-    printf("13)|%-+o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("13)|%-+o| - My 'o'\n", 2147483647);
+    // printf("13)|%-+o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("14)|%#-.26o| - My 'o'\n", 2147483647);
-    printf("14)|%#-.26o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("14)|%#-.26o| - My 'o'\n", 2147483647);
+    // printf("14)|%#-.26o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("15)|%-.4o| - My 'o'\n", 2147483647);
-    printf("15)|%-.4o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("15)|%-.4o| - My 'o'\n", 2147483647);
+    // printf("15)|%-.4o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("16)|%.16o| - My 'o'\n", 2147483647);
-    printf("16)|%.16o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("16)|%.16o| - My 'o'\n", 2147483647);
+    // printf("16)|%.16o| - Orig 'o'\n\n", 2147483647);
 	
-	ft_printf("17)|%.4o| - My 'o'\n", 2147483647);
-    printf("17)|%.4o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("17)|%.4o| - My 'o'\n", 2147483647);
+    // printf("17)|%.4o| - Orig 'o'\n\n", 2147483647);
 
-	ft_printf("18)|%030o| - My 'o'\n", 2147483647);
-    printf("18)|%030o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("18)|%030o| - My 'o'\n", 2147483647);
+    // printf("18)|%030o| - Orig 'o'\n\n", 2147483647);
 
-	ft_printf("19)|%0.30o| - My 'o'\n", 2147483647);
-    printf("19)|%0.30o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("19)|%0.30o| - My 'o'\n", 2147483647);
+    // printf("19)|%0.30o| - Orig 'o'\n\n", 2147483647);
 
-	ft_printf("20)|%13.12o| - My 'o'\n", 2147483647);
-    printf("20)|%13.12o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("20)|%13.12o| - My 'o'\n", 2147483647);
+    // printf("20)|%13.12o| - Orig 'o'\n\n", 2147483647);
 
-	ft_printf("21)|%14.13o| - My 'o'\n", 2147483647);
-    printf("21)|%14.13o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("21)|%14.13o| - My 'o'\n", 2147483647);
+    // printf("21)|%14.13o| - Orig 'o'\n\n", 2147483647);
 
-	ft_printf("22)|%14.14o| - My 'o'\n", 2147483647);
-    printf("22)|%14.14o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("22)|%14.14o| - My 'o'\n", 2147483647);
+    // printf("22)|%14.14o| - Orig 'o'\n\n", 2147483647);
 
-	ft_printf("23)|%14.14 32.23o| - My 'o'\n", 2147483647);
-    printf("23)|%#14.14 32.23o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("23)|%14.14 32.23o| - My 'o'\n", 2147483647);
+    // printf("23)|%#14.14 32.23o| - Orig 'o'\n\n", 2147483647);
 
-	ft_printf("24)|%#-0 28.1o| - My 'o'\n", 2147483647);
-    printf("24)|%#-0 28.1o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("24)|%#-0 28.1o| - My 'o'\n", 2147483647);
+    // printf("24)|%#-0 28.1o| - Orig 'o'\n\n", 2147483647);
 
-	ft_printf("25)|%#0o| - My 'o'\n", 2147483647);
-    printf("25)|%#0o| - Orig 'o'\n\n", 2147483647);
+	// ft_printf("25)|%# 0o| - My 'o'\n", 2147483647);
+    // printf("25)|%# 0o| - Orig 'o'\n\n", 2147483647);
 
 	// ft_printf("22)|%Z| - My 'p'\n", &i);
     // printf("22)|%Z| - Orig 'p'\n\n", &i);

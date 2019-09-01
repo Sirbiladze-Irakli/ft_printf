@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 13:51:10 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/01 16:52:46 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,15 @@ void    ft_push_arg(char **s, char *tmp, t_printf *p);
 void    ft_push_arg2(char **s, char *tmp, int size, t_printf *p);
 void    push_arg_hex_oct(char **s, char *tmp, int len, t_printf *p);
 void	push_hash(char **s, int calibr, int len, t_printf *p);
+int		calibr_o_x(int calibr, t_printf *p);
 int     push_zero(char **s, int calibr, int len, t_printf *p);
 void    cut_zero(char **s, int len, t_printf *p);
 char	*whats_hash(t_printf *p);
 int		calibration_of_prec(int len, t_printf *p);
 int     ft_size_modif(int len, t_printf *p);
 int		ft_size_mal(int len, t_printf *p);
+int     fill_plus_or_space(char **s, int calibr, t_printf *p);
+
 
 // void    form_prec_max(char **s, t_printf *p);
 

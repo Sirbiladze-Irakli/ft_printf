@@ -6,7 +6,7 @@
 #    By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/22 14:06:12 by jormond-          #+#    #+#              #
-#    Updated: 2019/09/01 12:56:34 by jormond-         ###   ########.fr        #
+#    Updated: 2019/09/01 16:52:20 by jormond-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SOURCES_LIST = 	arg_form.c bonuses.c form_plus.c form_space.c \
 				ft_printf.c arg_form2.c form_hex.c form_tools.c \
 				modif_checker.c parse_struct.c prec_converter.c sorter.c \
 				struct_init.c width_converter.c form_uint_prec.c form_hex2.c \
-				tools.c tools2.c form_tools2.c form_tools3.c
+				tools.c tools2.c form_tools2.c form_tools3.c form_tools4.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
 OBJECTS_DIRECTORY = objects/
