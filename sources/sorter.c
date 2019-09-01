@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/31 18:20:47 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/01 14:33:52 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,36 +68,47 @@ void	sort_ptr(va_list ap, t_printf *p)
     void	*ptr;
 	char	*tmp;
 	char	*s;
-	char	*z;
 	int		len;
 
-	z = "0";
 	ptr = va_arg(ap, void *);
 	tmp = ft_itoa_base_c((unsigned long long)ptr, 16, p->specifier);
-	len = ft_strlen(tmp);
+	len = ft_strlen(tmp) + 2;
+	p->prec += 2;
 	format_ptr(&s, tmp, len, p);
 	free (s);
 }
 
-void	sort_oct_hex(va_list ap, t_printf *p)
+void	sort_hex(va_list ap, t_printf *p)
 {
 	unsigned long	i;
+	char			*tmp;
 	char			*s;
+	int				len;
 
-	if (p->specifier == 'x' || p->specifier == 'X')
+	i = va_arg(ap, unsigned long);
+	tmp = ft_itoa_base_c(i, 16, p->specifier);
+	len = ft_strlen(tmp);
+	if (HASH == '1')
 	{
-		i = va_arg(ap, unsigned long);
-		s = ft_strnew(ft_nbrlen(i));
-		s = ft_itoa_base_c(i, 16, p->specifier);
-		s = format_hex(s, p);
-		write(1, s, ft_strlen(s));
+		len += 2;
+		p->prec += 2;
 	}
-	if (p->specifier == 'o')
-	{
-		i = va_arg(ap, unsigned long);
-		s = ft_strnew(ft_nbrlen(i));
-		s = ft_itoa_base_c(i, 8, p->specifier);
-		s = format_oct(s, p);
-		write(1, s, ft_strlen(s));
-	}
+	format_hex(&s, tmp, len, p);
+	free (s);
+}
+
+void	sort_oct(va_list ap, t_printf *p)
+{
+	unsigned long	i;
+	char			*tmp;
+	char			*s;
+	int				len;
+
+	i = va_arg(ap, unsigned long);
+	tmp = ft_itoa_base_c(i, 8, p->specifier);
+	len = ft_strlen(tmp);
+	if (HASH == '1')
+		len++;
+	format_oct(&s, tmp, len, p);
+	free (s);
 }

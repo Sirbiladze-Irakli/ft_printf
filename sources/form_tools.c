@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 13:31:45 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/31 14:19:26 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/01 14:35:04 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void    form_prec_min(char **s, char *tmp, t_printf *p)
 
 void	ft_arg_mal(char **s, int len, t_printf *p)
 {
+	// printf("%d - len\n", len);
+	// printf("%d - wid\n", p->width);
 	if (p->width >= len)
 	{
 		*s = (char *)malloc(sizeof(char) * (p->width));
@@ -73,11 +75,11 @@ int		ft_size_mal(int len, t_printf *p)
 {
 	int		res;
 
-	if ((len + 2) >= p->width && (len + 2) >= (p->prec + 2))
-		res = len + 2;
-	if ((p->prec + 2) >= (len + 2) && (p->prec + 2) >= p->width)
-		res = p->prec + 2;
-	if (p->width >= (len + 2) && p->width >= (p->prec + 2))
+	if ((len) >= p->width && (len) >= (p->prec))
+		res = len;
+	if ((p->prec) >= (len) && (p->prec) >= p->width)
+		res = p->prec;
+	if (p->width >= (len) && p->width >= (p->prec))
 		res = p->width;
 	return (res);
 }

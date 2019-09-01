@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hwilderm <hwilderm@student.42.fr>          +#+  +:+       +#+         #
+#    By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/15 15:47:49 by jormond-          #+#    #+#              #
-#    Updated: 2019/08/24 18:36:11 by hwilderm         ###   ########.fr        #
+#    Updated: 2019/09/01 12:57:35 by jormond-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ SOURCES_LIST	= ft_bzero.c \
 		ft_isascii.c \
 		ft_isdigit.c \
 		ft_isprint.c \
-		ft_itoa_base_c.c \
 		ft_join_free.c \
 		ft_memalloc.c \
 		ft_memchr.c \

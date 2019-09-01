@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/30 16:22:07 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/01 13:42:25 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ void		distributor(va_list ap, t_printf *p)
 	    sort_ptr(ap, p);
 	else if (p->specifier == 's')
 		sort_str(ap, p);
-	else if (ft_strchr("oxX", p->specifier))
-		sort_oct_hex(ap, p);
+	else if (ft_strchr("xX", p->specifier))
+		sort_hex(ap, p);
+	else if (p->specifier == 'o')
+		sort_oct(ap, p);
 	else if (p->specifier == 'b')
 		sort_bin(p->specifier, ap);
 	else if (ft_strchr("%%", p->specifier))

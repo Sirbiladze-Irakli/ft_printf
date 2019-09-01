@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/31 18:15:07 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/01 13:51:10 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	sort_int(va_list ap, t_printf *p);
 void    sort_chr(va_list ap, t_printf *p);
 void	sort_str(va_list ap, t_printf *p);
 void	sort_ptr(va_list ap, t_printf *p);
-void	sort_oct_hex(va_list ap, t_printf *p);
+void	sort_hex(va_list ap, t_printf *p);
+void	sort_oct(va_list ap, t_printf *p);
 void	sort_bin(char c, va_list ap);
 
 		/********************************/
@@ -88,8 +89,8 @@ void    format_int(char **s, char *tmp, int len, t_printf *p);
 char    *format_uint(char *s, t_printf *p);
 void    format_chr(char **s, t_printf *p, char c1);
 void    format_ptr(char **s, char *tmp, int len, t_printf *p);
-char    *format_oct(char *s, t_printf *p);
-char    *format_hex(char *s, t_printf *p);
+void    format_oct(char **s, char *tmp, int len, t_printf *p);
+void    format_hex(char **s, char *tmp, int len, t_printf *p);
 
 		/********************************/
 		/* 			form tools			*/
@@ -123,5 +124,7 @@ void    write_arg_c(char *s, int len, t_printf *p);
 void    write_arg_hex_oct(char *s, int size, t_printf *p);
 void    ft_strdup_free(char **s, char *arg, t_printf *p);
 void	ft_strsub_free(char **s, char *tmp, t_printf *p);
+char	*ft_itoa_base_c(unsigned long long value, int base, char c);
+
 
 #endif

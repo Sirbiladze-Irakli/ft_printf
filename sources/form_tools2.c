@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 13:47:47 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/31 18:19:29 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/01 14:36:22 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void    push_arg_hex_oct(char **s, char *tmp, int len, t_printf *p)
 
 	i = -1;
 	calibr = calibration_of_prec(len, p);
-    if (HASH == '1' && p->specifier == 'p')
+    if (HASH == '1' || p->specifier == 'p')
 	{
 		push_hash(s, calibr, len, p);
-		calibr += 2;
+		calibr += 1;
 	}
 	calibr = push_zero(s, calibr, len, p);
 	if (p->width > len && p->width > p->prec && ZERO == '1'
@@ -50,8 +50,10 @@ char	*whats_hash(t_printf *p)
 
 	if (p->specifier == 'x' || p->specifier == 'p')
 		tmp = "0x";
-	else
+	else if (p->specifier == 'X')
 		tmp = "0X";
+	else
+		tmp = "0";
 	return (tmp);
 }
 
@@ -61,11 +63,11 @@ int		calibration_of_prec(int len, t_printf *p)
 	int		tmp;
 
 	if (len > p->prec)
-		tmp = len + 2;
+		tmp = len;
 	else
-		tmp = p->prec + 2;
-	if (MINUS == '1' || p->width <= len + 2 || p->width <= p->prec + 2
-		|| ZERO == '1')
+		tmp = p->prec;
+	if (MINUS == '1' || p->width <= len || p->width <= p->prec
+			|| ZERO == '1')
 		res = 0;
 	else if (p->width >= tmp)
 		res = p->width - tmp;
