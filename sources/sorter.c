@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 17:00:01 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/01 17:02:49 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	sort_str(va_list ap, t_printf *p)
 	free (s);
 }
 
-void	sort_ptr(va_list ap, t_printf *p)
+void	sort_ptr(va_list ap, t_printf *p) // repair 
 {
     void	*ptr;
 	char	*tmp;
@@ -86,7 +86,7 @@ void	sort_ptr(va_list ap, t_printf *p)
 	free (s);
 }
 
-void	sort_hex(va_list ap, t_printf *p)
+void	sort_hex(va_list ap, t_printf *p) // repair 
 {
 	unsigned long	i;
 	char			*tmp;
