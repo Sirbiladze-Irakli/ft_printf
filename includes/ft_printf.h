@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 11:44:34 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 12:54:50 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int		modif_checker(t_printf *p, char *buf, int i);
 		/********************************/
 
 void	sort_int(va_list ap, t_printf *p);
+void	sort_uint(va_list ap, t_printf *p);
 void    sort_chr(va_list ap, t_printf *p);
 void	sort_str(va_list ap, t_printf *p);
 void	sort_ptr(va_list ap, t_printf *p);
@@ -86,7 +87,6 @@ void	sort_bin(char c, va_list ap);
 
 void    format_str(char **s, char *tmp, int len, t_printf *p);
 void    format_int(char **s, char *tmp, int len, t_printf *p);
-char    *format_uint(char *s, t_printf *p);
 void    format_chr(char **s, t_printf *p, char c1);
 void    format_ptr(char **s, char *tmp, int len, t_printf *p);
 void    format_oct(char **s, char *tmp, int len, t_printf *p);
@@ -97,8 +97,6 @@ void    format_hex(char **s, char *tmp, int len, t_printf *p);
 		/********************************/
 
 void    form_prec_min(char **s, char *tmp, t_printf *p);
-// void    form_width(char **s, int len, char *tmp, t_printf *p);
-// void	form_width_char(char **s, int len, char c1, t_printf *p);
 void	form_zero(char **s, int size, t_printf *p);
 void	ft_arg_mal(char **s, int len, t_printf *p);
 void    ft_push_arg(char **s, char *tmp, t_printf *p);
@@ -108,15 +106,13 @@ void    push_arg_int(char **s, char *tmp, int len, t_printf *p);
 void	push_hash(char **s, int calibr, int len, t_printf *p);
 int		calibr_o_x(int calibr, t_printf *p);
 int     push_zero(char **s, int calibr, int len, t_printf *p);
+int		cut_front_zero(char **s, t_printf *p);
 void    cut_zero(char **s, int len, t_printf *p);
 char	*whats_hash(t_printf *p);
 int		calibration_of_prec(int len, t_printf *p);
 int     ft_size_modif(int len, t_printf *p);
 int		ft_size_mal(int len, t_printf *p);
 int     fill_plus_or_space(char **s, int calibr, t_printf *p);
-
-
-// void    form_prec_max(char **s, t_printf *p);
 
 		/********************************/
 		/* 			another tools		*/

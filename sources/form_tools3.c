@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 15:53:58 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 11:37:34 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 12:29:12 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void    push_arg_int(char **s, char *tmp, int len, t_printf *p)
 	calibr = calibration_of_prec(len, p);
 	if (PLUS == '1' || SPACE == '1')
 		calibr = fill_plus_or_space(s, calibr, p);
+	if (ZERO == '1' && p->prec < p->width)
+		calibr = cut_front_zero(s, p);
 	calibr = push_zero(s, calibr, len, p);
 	while(tmp[++i])
 		(*s)[calibr + i] = tmp[i];

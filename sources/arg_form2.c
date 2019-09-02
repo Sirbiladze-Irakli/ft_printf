@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:48:48 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 11:44:20 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 12:51:09 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,4 @@ void    format_int(char **s, char *tmp, int len, t_printf *p)
 	// 	s = form_space(s);
 	// if (p->width > (int)ft_strlen(s))
 	// 	s = form_width_minus(s, p);
-}
-
-char    *format_uint(char *s, t_printf *p)
-{
-	p->prec = 0;
-	// if (ZERO == '1' && MINUS == '1')
-	// 	ZERO = '0';
-	// s = form_uint_prec(s, p);
-	// if (p->width > (int)ft_strlen(s))
-	// 	s = form_width_minus(s, p);
-	return (s);
 }
