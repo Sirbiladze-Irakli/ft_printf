@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:52:52 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 15:11:28 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 11:52:58 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_itoa_base_c(unsigned long long value, int base, char c)
 {
-	char		rep[16] = "0123456789abcdef";
+	char			rep[16] = "0123456789abcdef";
 	static char		buf[50];
 	char			*ptr;
 	unsigned long	num;

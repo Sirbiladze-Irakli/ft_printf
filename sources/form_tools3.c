@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 15:53:58 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 17:10:41 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 11:37:34 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,4 @@ void    push_arg_int(char **s, char *tmp, int len, t_printf *p)
 	calibr = push_zero(s, calibr, len, p);
 	while(tmp[++i])
 		(*s)[calibr + i] = tmp[i];
-	// printf("%s - s\n", *s);
 }

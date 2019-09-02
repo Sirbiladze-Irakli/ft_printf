@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 16:52:46 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 11:44:34 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	ft_arg_mal(char **s, int len, t_printf *p);
 void    ft_push_arg(char **s, char *tmp, t_printf *p);
 void    ft_push_arg2(char **s, char *tmp, int size, t_printf *p);
 void    push_arg_hex_oct(char **s, char *tmp, int len, t_printf *p);
+void    push_arg_int(char **s, char *tmp, int len, t_printf *p);
 void	push_hash(char **s, int calibr, int len, t_printf *p);
 int		calibr_o_x(int calibr, t_printf *p);
 int     push_zero(char **s, int calibr, int len, t_printf *p);
@@ -125,6 +126,7 @@ int     ft_nbrlen(unsigned long i);
 void    write_arg(char *s, int len, t_printf *p);
 void    write_arg_c(char *s, int len, t_printf *p);
 void    write_arg_hex_oct(char *s, int size, t_printf *p);
+void    write_arg_int(char *s, int len, t_printf *p);
 void    ft_strdup_free(char **s, char *arg, t_printf *p);
 void	ft_strsub_free(char **s, char *tmp, t_printf *p);
 char	*ft_itoa_base_c(unsigned long long value, int base, char c);

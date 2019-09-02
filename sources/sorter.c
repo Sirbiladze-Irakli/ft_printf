@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 17:02:49 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 11:44:24 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void    sort_int(va_list ap, t_printf *p)
 	if (PLUS == '1' && SPACE == '1')
 		SPACE = '0';
 	format_int(&s, tmp, len, p);
-	write_arg(s, len, p);
+	write_arg_int(s, len, p);
+	// write_arg(s, len, p);
 	// if(p->specifier == 'u')
 	// {
 	// 	s = ft_itoa(va_arg(ap, unsigned long));
