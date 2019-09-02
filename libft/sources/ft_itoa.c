@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwilderm <hwilderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:55:02 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/24 18:25:52 by hwilderm         ###   ########.fr       */
+/*   Updated: 2019/09/02 16:43:18 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-static size_t		ft_uintlen(unsigned int n)
+static size_t		ft_uintlen(long long n)
 {
 	size_t	size;
 
@@ -22,14 +22,14 @@ static size_t		ft_uintlen(unsigned int n)
 	return (++size);
 }
 
-char	*ft_itoa(long int n)
+char	*ft_itoa(long long int n)
 {
 	char			*str;
-	unsigned int	un;
-	long int		i;
+	long long		un;
+	long long		i;
 	size_t			size;
 
-	un = n < 0 ? (unsigned int)(n * -1) : (unsigned int)n;
+	un = n < 0 ? (long long)(n * -1) : (long long)n;
 	size = ft_uintlen(un);
 	if ((str = ft_strnew(size + (n < 0 ? 1 : 0))))
 	{

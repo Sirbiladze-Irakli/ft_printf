@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 12:52:52 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 11:52:58 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 16:32:08 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,12 @@ char	*ft_itoa_base_c(unsigned long long value, int base, char c)
 	if (num != 0 && base == 10)
 		*--ptr = '-';
 	return (ptr);
+}
+
+void	int_len_modif(int *len, t_printf *p)
+{
+	if (p->width == *len || p->width == p->prec)
+		p->width++;
+	(*len)++;
+	p->prec++;
 }

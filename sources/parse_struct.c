@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 12:40:31 by jormond-          #+#    #+#             */
-/*   Updated: 2019/08/27 14:18:39 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 18:37:22 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void    parse_struct(char *buf, t_printf *p)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
     struct_init(p);
     while (buf[++i])
     {

@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 12:24:07 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 15:29:14 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 15:37:55 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    format_str(char **s, char *tmp, int len, t_printf *p)
 	
 }
 
-void    format_chr(char **s, t_printf *p, char c1)
+void    format_chr(char **s, t_printf *p)
 {
 	int		len;
 

@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 15:53:58 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 12:29:12 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 18:48:38 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int     push_zero(char **s, int calibr, int len, t_printf *p)
 	i = -1;
 	if ((zero = p->prec - len) < 0)
 		zero = 0;
-	if (p->width > len && p->width > p->prec && (ZERO == '1'
-		|| ZERO == '1') && MINUS == '0')
+	if (p->width > len && p->width > p->prec && ZERO == '1'
+		&& MINUS == '0')
 	{
 		if (len > p->prec)
 			zero = p->width - len;

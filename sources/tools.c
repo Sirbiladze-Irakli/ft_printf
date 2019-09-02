@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 18:16:42 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 11:47:07 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 18:52:44 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,6 @@ int     ft_nbrlen(unsigned long i)
     }
     return (counter);
 }
-
-// void    ft_strdup_free(char **s, char *arg, t_printf *p)
-// {
-//     char    *tmp;
-
-//     tmp = ft_strdup(arg);
-//     *s = tmp;
-//     free(tmp);
-// }
 
 void    write_arg(char *s, int len, t_printf *p)
 {

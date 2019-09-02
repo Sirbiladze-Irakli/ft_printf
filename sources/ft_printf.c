@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 12:50:24 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 19:32:30 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,27 @@
 
 void		distributor(va_list ap, t_printf *p)
 {
+	int res;
+
 	if (ft_strchr("di", p->specifier))
-		sort_int(ap, p);
+		res = sort_int(ap, p);
 	else if (p->specifier == 'c')
-		sort_chr(ap, p);
+		res = sort_chr(ap, p);
 	else if (p->specifier == 'p')
-	    sort_ptr(ap, p);
+	    res = sort_ptr(ap, p);
 	else if (p->specifier == 's')
-		sort_str(ap, p);
+		res = sort_str(ap, p);
 	else if (ft_strchr("xX", p->specifier))
-		sort_hex(ap, p);
+		res = sort_hex(ap, p);
 	else if (p->specifier == 'o')
-		sort_oct(ap, p);
+		res = sort_oct(ap, p);
 	else if (p->specifier == 'b')
-		sort_bin(p->specifier, ap);
-	if (p->specifier == 'u')
-		sort_uint(ap, p);
-	else if (ft_strchr("%%", p->specifier))
-		write(1, "%%", 1);
+		res = sort_bin(p->specifier, ap);
+	else if (p->specifier == 'u')
+		res = sort_uint(ap, p);
+	else if (p->specifier == '%')
+		res = sort_per(p);
+	
 }
 
 int     ft_arg_reader(const char *format, int i, va_list ap)
@@ -42,15 +45,15 @@ int     ft_arg_reader(const char *format, int i, va_list ap)
 
 	j = 0;
 	ft_bzero(buf, BUFF_SIZE);
-	while (format[i])
+	while (format[++i])
 	{
-		buf[j++] = format[i++];
-		if (ft_strchr("bcspdiouxXf", format[i - 1]))
+		buf[j++] = format[i];
+		if (ft_strchr("bcspdiouxXf%", format[i]))
 		{
 			buf[j] = '\0';
 			parse_struct(buf, &p);
 			distributor(ap, &p);
-			return (--i);
+			return (i);
 		}
 	}
 	return (0);

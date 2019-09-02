@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 16:00:11 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 12:29:15 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 19:12:33 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,46 @@ int		cut_front_zero(char **s, t_printf *p)
 	while(++i < size)
 		(*s)[i] = ' ';
 	return(i);
+}
+
+void    var_sign_modif(long long *arg, t_printf *p)
+{
+    if (p->modifier[0] == 'h' && (p->count_mod % 2) != 0)
+        (*arg) = (char)(*arg);
+    else if (p->modifier[0] == 'h' && (p->count_mod % 2) == 0)
+        (*arg) = (short)(*arg);
+    else if (p->modifier[0] == 'l' && (p->count_mod % 2) != 0)
+        (*arg) = (long)(*arg);
+    else if (p->modifier[0] == 'l' && (p->count_mod % 2) == 0)    
+        (*arg) = (long long)(*arg);
+    else
+        (*arg) = (int)(*arg);
+}
+
+void    var_unsign_modif(unsigned long long *arg, t_printf *p)
+{
+    if (p->modifier[0] == 'h' && (p->count_mod % 2) != 0)
+        (*arg) = (unsigned char)(*arg);
+    else if (p->modifier[0] == 'h' && (p->count_mod % 2) == 0)
+        (*arg) = (unsigned short)(*arg);
+    else if (p->modifier[0] == 'l' && (p->count_mod % 2) != 0)
+        (*arg) = (unsigned long)(*arg);
+    else if (p->modifier[0] == 'l' && (p->count_mod % 2) == 0)    
+        (*arg) = (unsigned long long)(*arg);
+    else
+        (*arg) = (unsigned int)(*arg);
+}
+
+void    push_per(char **s, char tmp, t_printf *p)
+{
+    int     calibr;
+
+    calibr = 0;
+    if (MINUS == '0')
+        if ((calibr = p->width - 1) < 0)
+            calibr = 0;
+    if (MINUS == '1')
+        cut_zero(s, 1, p);
+    (*s)[calibr] = '%';
+    // printf("%s| - s\n", *s);
 }

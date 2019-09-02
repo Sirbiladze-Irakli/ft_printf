@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 12:54:50 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 19:32:40 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef struct	s_printf
 	int			width;
 	int			prec;
 	int			dot;
-	char		modifier[4];
+	char		modifier[20];
+	int			count_mod;
 	char		specifier;
 	char		hex_hash[2];
 }				t_printf;
@@ -72,14 +73,15 @@ int		modif_checker(t_printf *p, char *buf, int i);
 		/* 			sorter				*/
 		/********************************/
 
-void	sort_int(va_list ap, t_printf *p);
-void	sort_uint(va_list ap, t_printf *p);
-void    sort_chr(va_list ap, t_printf *p);
-void	sort_str(va_list ap, t_printf *p);
-void	sort_ptr(va_list ap, t_printf *p);
-void	sort_hex(va_list ap, t_printf *p);
-void	sort_oct(va_list ap, t_printf *p);
-void	sort_bin(char c, va_list ap);
+int		sort_int(va_list ap, t_printf *p);
+int		sort_uint(va_list ap, t_printf *p);
+int	    sort_chr(va_list ap, t_printf *p);
+int		sort_str(va_list ap, t_printf *p);
+int		sort_ptr(va_list ap, t_printf *p);
+int		sort_hex(va_list ap, t_printf *p);
+int		sort_oct(va_list ap, t_printf *p);
+int		sort_per(t_printf *p);
+int		sort_bin(char c, va_list ap);
 
 		/********************************/
 		/* 			arg format			*/
@@ -87,10 +89,11 @@ void	sort_bin(char c, va_list ap);
 
 void    format_str(char **s, char *tmp, int len, t_printf *p);
 void    format_int(char **s, char *tmp, int len, t_printf *p);
-void    format_chr(char **s, t_printf *p, char c1);
+void    format_chr(char **s, t_printf *p);
 void    format_ptr(char **s, char *tmp, int len, t_printf *p);
 void    format_oct(char **s, char *tmp, int len, t_printf *p);
 void    format_hex(char **s, char *tmp, int len, t_printf *p);
+void	format_per(char **s, char tmp, t_printf *p);
 
 		/********************************/
 		/* 			form tools			*/
@@ -113,6 +116,9 @@ int		calibration_of_prec(int len, t_printf *p);
 int     ft_size_modif(int len, t_printf *p);
 int		ft_size_mal(int len, t_printf *p);
 int     fill_plus_or_space(char **s, int calibr, t_printf *p);
+void    var_sign_modif(long long *arg, t_printf *p);
+void    var_unsign_modif(unsigned long long *arg, t_printf *p);
+void    push_per(char **s, char tmp, t_printf *p);
 
 		/********************************/
 		/* 			another tools		*/
@@ -126,6 +132,7 @@ void    write_arg_int(char *s, int len, t_printf *p);
 void    ft_strdup_free(char **s, char *arg, t_printf *p);
 void	ft_strsub_free(char **s, char *tmp, t_printf *p);
 char	*ft_itoa_base_c(unsigned long long value, int base, char c);
+void	int_len_modif(int *len, t_printf *p);
 
 
 #endif

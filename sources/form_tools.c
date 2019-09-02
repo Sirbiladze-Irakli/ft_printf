@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 13:31:45 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/01 15:26:53 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/02 18:39:50 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,12 @@ void    form_prec_min(char **s, char *tmp, t_printf *p)
 	
 }
 
-// void	form_width_char(char **s, int len, char c1, t_printf *p)
-// {
-// 	ft_arg_malloc(s, len, p);
-// }
-
-// void    form_width(char **s, int len, char *tmp, t_printf *p)
-// {
-// 	ft_arg_malloc(s, len, p);
-// }
-
 	/************************************/
 	/* 		allocate memory for arg		*/
 	/************************************/
 
 void	ft_arg_mal(char **s, int len, t_printf *p)
 {
-	// printf("%d - len\n", len);
-	// printf("%d - wid\n", p->width);
 	if (p->width >= len)
 	{
 		*s = (char *)malloc(sizeof(char) * (p->width));
