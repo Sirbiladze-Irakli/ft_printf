@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 19:35:04 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 13:08:57 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,21 @@ int	    sort_int(va_list ap, t_printf *p)
 	HASH = '0';
 	arg = va_arg(ap, long long);
 	var_sign_modif(&arg, p);
+	printf("%lld - arg\n", arg);
+	if (arg < 0)
+		SPACE = '0';
 	tmp = ft_itoa(arg);
 	len = ft_strlen(tmp);
-	if (PLUS == '1' || SPACE == '1')
+	if ((PLUS == '1' || SPACE == '1') && arg > 0)
 		int_len_modif(&len, p);
 	if (PLUS == '1' && SPACE == '1')
 		SPACE = '0';
 	format_int(&s, tmp, len, p);
 	free(tmp);
-	write_arg_int(s, len, p);
+	len = write_arg_int(s, len, p);
+	write (1, s, len);
 	free (s);
+	return (len);
 }
 
 int	    sort_chr(va_list ap, t_printf *p)
@@ -47,8 +52,10 @@ int	    sort_chr(va_list ap, t_printf *p)
 		s[0] = c1;
 	else
 		s[p->width - len] = c1;
-	write_arg_c(s, len, p);
+	len = write_arg_c(s, len, p);
+	write (1, s, len);
 	free (s);
+	return (len);
 }
 
 int		sort_str(va_list ap, t_printf *p)
@@ -59,12 +66,18 @@ int		sort_str(va_list ap, t_printf *p)
 
 	len = 6;
 	if (!(tmp = va_arg(ap, char *)))
+	{
 		write(1, "(null)", len);
-	else	
+		return (len);
+	}
+	else
+	{
 		len = ft_strlen(tmp);
 		format_str(&s, tmp, len, p);
-		write_arg(s, len, p);
+		len = write_arg(s, len, p);
+		write (1, s, len);
 		free (s);
+	}
 	return (len);
 }
 
@@ -79,8 +92,9 @@ int		sort_ptr(va_list ap, t_printf *p)
 	tmp = ft_itoa_base_c((unsigned long long)ptr, 16, p->specifier);
 	len = ft_strlen(tmp) + 2;
 	p->prec += 2;
-	format_ptr(&s, tmp, len, p);
+	len = format_ptr(&s, tmp, len, p);
 	free (s);
+	return (len);
 }
 
 int		sort_hex(va_list ap, t_printf *p)
@@ -94,6 +108,8 @@ int		sort_hex(va_list ap, t_printf *p)
 	var_unsign_modif(&arg, p);
 	tmp = ft_itoa_base_c(arg, 16, p->specifier);
 	len = ft_strlen(tmp);
+	if (!ft_strcmp(tmp, "0"))
+		HASH = '0';
 	if (HASH == '1')
 	{
 		len += 2;
@@ -101,4 +117,5 @@ int		sort_hex(va_list ap, t_printf *p)
 	}
 	format_hex(&s, tmp, len, p);
 	free (s);
+	return (p->width > len ? p->width : len);
 }

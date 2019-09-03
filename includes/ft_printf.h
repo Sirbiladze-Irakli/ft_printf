@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 19:32:40 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 12:57:46 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*front_add_hex(char *s, t_printf *p);
 
 int		ft_printf(const char *format, ...);
 int     ft_arg_reader(const char *format, int i, va_list ap);
-void	distributor(va_list ap, t_printf *p);
+int		distributor(va_list ap, char *buf, t_printf *p);
 
 		/********************************/
 		/* 			struct init			*/
@@ -90,8 +90,8 @@ int		sort_bin(char c, va_list ap);
 void    format_str(char **s, char *tmp, int len, t_printf *p);
 void    format_int(char **s, char *tmp, int len, t_printf *p);
 void    format_chr(char **s, t_printf *p);
-void    format_ptr(char **s, char *tmp, int len, t_printf *p);
-void    format_oct(char **s, char *tmp, int len, t_printf *p);
+int	    format_ptr(char **s, char *tmp, int len, t_printf *p);
+int	    format_oct(char **s, char *tmp, int len, t_printf *p);
 void    format_hex(char **s, char *tmp, int len, t_printf *p);
 void	format_per(char **s, char tmp, t_printf *p);
 
@@ -115,7 +115,7 @@ char	*whats_hash(t_printf *p);
 int		calibration_of_prec(int len, t_printf *p);
 int     ft_size_modif(int len, t_printf *p);
 int		ft_size_mal(int len, t_printf *p);
-int     fill_plus_or_space(char **s, int calibr, t_printf *p);
+int     fill_plus_or_space(char **s, char *tmp, int calibr, t_printf *p);
 void    var_sign_modif(long long *arg, t_printf *p);
 void    var_unsign_modif(unsigned long long *arg, t_printf *p);
 void    push_per(char **s, char tmp, t_printf *p);
@@ -125,10 +125,10 @@ void    push_per(char **s, char tmp, t_printf *p);
 		/********************************/
 
 int     ft_nbrlen(unsigned long i);
-void    write_arg(char *s, int len, t_printf *p);
-void    write_arg_c(char *s, int len, t_printf *p);
+int	    write_arg(char *s, int len, t_printf *p);
+int	    write_arg_c(char *s, int len, t_printf *p);
 void    write_arg_hex_oct(char *s, int size, t_printf *p);
-void    write_arg_int(char *s, int len, t_printf *p);
+int	    write_arg_int(char *s, int len, t_printf *p);
 void    ft_strdup_free(char **s, char *arg, t_printf *p);
 void	ft_strsub_free(char **s, char *tmp, t_printf *p);
 char	*ft_itoa_base_c(unsigned long long value, int base, char c);

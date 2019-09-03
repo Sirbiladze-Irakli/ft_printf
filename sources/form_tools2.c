@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 13:47:47 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 12:05:49 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 12:30:50 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,12 @@ void    push_arg_hex_oct(char **s, char *tmp, int len, t_printf *p)
 	if (p->width > len && p->width > p->prec && ZERO == '1'
 		&& MINUS == '1')
 		cut_zero(s, len, p);
-	while(tmp[++i])
-		(*s)[calibr + i] = tmp[i];
+	if (p->prec != 0 && (p->specifier == 'x' || p->specifier == 'X'))
+		while(tmp[++i])
+			(*s)[calibr + i] = tmp[i];
+	else if (p->specifier == 'o' || p->specifier == 'p')
+		while(tmp[++i])
+			(*s)[calibr + i] = tmp[i];
 }
 
 void	push_hash(char **s, int calibr, int len, t_printf *p)

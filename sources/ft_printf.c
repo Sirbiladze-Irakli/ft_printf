@@ -6,13 +6,13 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 19:32:30 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 13:01:14 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		distributor(va_list ap, t_printf *p)
+int			distributor(va_list ap, char *buf, t_printf *p)
 {
 	int res;
 
@@ -34,7 +34,9 @@ void		distributor(va_list ap, t_printf *p)
 		res = sort_uint(ap, p);
 	else if (p->specifier == '%')
 		res = sort_per(p);
-	
+	res -= ft_strlen(buf);
+	// printf("\n\n%d - size\n\n", res);
+	return (res);
 }
 
 int     ft_arg_reader(const char *format, int i, va_list ap)
@@ -52,8 +54,8 @@ int     ft_arg_reader(const char *format, int i, va_list ap)
 		{
 			buf[j] = '\0';
 			parse_struct(buf, &p);
-			distributor(ap, &p);
-			return (i);
+			j = distributor(ap, buf, &p);
+			return (j);
 		}
 	}
 	return (0);
@@ -62,18 +64,25 @@ int     ft_arg_reader(const char *format, int i, va_list ap)
 int		ft_printf(const char *format, ...)
 {
 	int	        i;
+	static int	ret;
 	va_list     ap;
 
 	i = 0;
+	ret = 0;
 	va_start(ap, format);
 	while(format[i] != '\0')
 	{
 		if (format[i] != '%')
 			write(1, &format[i], 1);
 		else
-			i = ft_arg_reader(format, i, ap);
+		{
+			ret += ft_arg_reader(format, i, ap);
+			while(!(ft_strchr("bcspdiouxXf%", format[++i])))
+				;
+		}
 		i++;
-	}    
+	}
+	ret += i - 1;
 	va_end(ap);
-	return (i);
+	return (ret);
 }

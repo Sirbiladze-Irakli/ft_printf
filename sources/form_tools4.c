@@ -6,15 +6,15 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 16:00:11 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 19:12:33 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 11:32:25 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int     fill_plus_or_space(char **s, int calibr, t_printf *p)
+int     fill_plus_or_space(char **s, char *tmp, int calibr, t_printf *p)
 {
-    if (PLUS == '1')
+    if (PLUS == '1' && tmp[0] != '-')
         (*s)[calibr] = '+';
     else if (PLUS == '0' && SPACE == '1')
         (*s)[calibr] = ' ';
