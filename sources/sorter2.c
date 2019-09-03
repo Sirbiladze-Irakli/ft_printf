@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 19:18:31 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 15:55:27 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 19:06:31 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		sort_uint(va_list ap, int  buf_size, t_printf *p)
 	len = ft_strlen(tmp);
 	format_int(&s, tmp, len, p);
 	free (tmp);
-	len = write_arg_int(s, len, p);
+	len = write_arg_int(len, p);
 	write (1, s, len);
 	free (s);
 	return (p->width > len ? p->width - buf_size : len - buf_size);
@@ -74,10 +74,22 @@ int		sort_per(t_printf *p, int  buf_size)
 
 	len = 1;
 	p->prec = 0;
-	format_per(&s, '%', p);
+	format_per(&s, p);
 	if (p->width > len)
 		len = p->width;
 	write(1, s, len);
 	free (s);
 	return (len - buf_size);
+}
+
+int		sort_float(va_list ap, int  buf_size, t_printf *p)
+{
+	// char	*s;
+	double	arg;
+
+	buf_size = 1;
+	p->width = 1;
+	arg = va_arg(ap, double);
+	// s = ft_conv_float(arg, p, 1);
+	return (buf_size);
 }

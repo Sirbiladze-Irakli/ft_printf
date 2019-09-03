@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 16:00:11 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 15:37:14 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 17:18:20 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void    var_unsign_modif(unsigned long long *arg, t_printf *p)
         (*arg) = (unsigned int)(*arg);
 }
 
-void    push_per(char **s, char tmp, t_printf *p)
+void    push_per(char **s, t_printf *p)
 {
     int     calibr;
 

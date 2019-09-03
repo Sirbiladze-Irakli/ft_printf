@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 13:48:48 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 19:06:59 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 17:18:44 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void    format_int(char **s, char *tmp, int len, t_printf *p)
 	push_arg_int(s, tmp, len, p);
 }
 
-void	format_per(char **s, char tmp, t_printf *p)
+void	format_per(char **s, t_printf *p)
 {
 	ft_arg_mal(s, 1, p);
 	// printf("%s| - s\n", *s);  		//  <--------wrong malloc!!!!
-	push_per(s, tmp, p);
+	push_per(s, p);
 }

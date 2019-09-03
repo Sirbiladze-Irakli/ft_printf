@@ -6,14 +6,14 @@
 #    By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/22 14:06:12 by jormond-          #+#    #+#              #
-#    Updated: 2019/09/02 19:34:47 by jormond-         ###   ########.fr        #
+#    Updated: 2019/09/03 17:12:13 by jormond-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libftprintf.a
 
 CC = gcc
-# FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 LIBRARIES = -lft -L$(LIBFT_DIRECTORY)
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS)
 
@@ -26,11 +26,11 @@ HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./sources/
-SOURCES_LIST = 	arg_form.c form_plus.c form_space.c \
-				ft_printf.c arg_form2.c form_hex.c form_tools.c sorter2.c\
-				modif_checker.c parse_struct.c prec_converter.c sorter.c \
-				struct_init.c width_converter.c form_uint_prec.c form_hex2.c \
-				tools.c tools2.c form_tools2.c form_tools3.c form_tools4.c
+SOURCES_LIST = 	ft_printf.c  parse_struct.c struct_init.c \
+				width_converter.c modif_checker.c prec_converter.c \
+				sorter.c sorter2.c arg_form.c arg_form2.c \
+				form_tools.c form_tools2.c form_tools3.c form_tools4.c \
+				tools.c tools2.c 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
 OBJECTS_DIRECTORY = objects/

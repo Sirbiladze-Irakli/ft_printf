@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 13:31:45 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/02 18:39:50 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 17:15:28 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,15 @@
 	/* 			cut prec			*/
 	/********************************/
 
-void    form_prec_min(char **s, char *tmp, t_printf *p)
-{
-	if (p->prec < 0 && p->dot == 0)
-		return ;
-	else if (p->prec >= 0)
-	{
-		// ft_strcut_arg(tmp, p);
-		return ;
-	}
-	else
-	{
-		p->prec = 6;
-
-	}
-	
-}
+// void    form_prec_min(t_printf *p)
+// {
+// 	if (p->prec < 0 && p->dot == 0)
+// 		return ;
+// 	else if (p->prec >= 0)
+// 		return ;
+// 	else
+// 		p->prec = 6;
+// }
 
 	/************************************/
 	/* 		allocate memory for arg		*/

@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 16:52:58 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 19:05:30 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int			distributor(va_list ap, char *buf, t_printf *p)
 	int res;
 	int  buf_size;
 
+	res = 0;
 	buf_size = ft_strlen(buf) + 1;
 	if (ft_strchr("di", p->specifier))
 		res = sort_int(ap, buf_size, p);
@@ -36,6 +37,8 @@ int			distributor(va_list ap, char *buf, t_printf *p)
 		res = sort_uint(ap, buf_size, p);
 	else if (p->specifier == '%')
 		res = sort_per(p, buf_size);
+	else if (p->specifier == 'f')
+		res = sort_float(ap, buf_size, p);
 	return (res);
 }
 

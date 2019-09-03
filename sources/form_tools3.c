@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 15:53:58 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 11:31:47 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 17:17:36 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void    cut_zero(char **s, int len, t_printf *p)
 {
 	int		i;
 
+	i = 0;
 	if ((MINUS == '1' && p->width > len) || (ZERO == '1'
 		&& p->width > len))
 	{

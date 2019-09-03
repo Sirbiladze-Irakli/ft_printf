@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 15:20:59 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 17:21:17 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	    sort_int(va_list ap, int  buf_size, t_printf *p)
 		int_len_modif(&len, p);
 	format_int(&s, tmp, len, p);
 	free(tmp);
-	len = write_arg_int(s, len, p);
+	len = write_arg_int(len, p);
 	write (1, s, len);
 	free (s);
 	return (len - buf_size);
@@ -53,7 +53,7 @@ int	    sort_chr(va_list ap, int  buf_size, t_printf *p)
 		s[0] = c1;
 	else
 		s[p->width - len] = c1;
-	len = write_arg_c(s, len, p);
+	len = write_arg_c(len, p);
 	write (1, s, len);
 	free (s);
 	return (len - buf_size);
@@ -75,7 +75,7 @@ int		sort_str(va_list ap, int  buf_size, t_printf *p)
 	{
 		len = ft_strlen(tmp);
 		format_str(&s, tmp, len, p);
-		len = write_arg(s, len, p);
+		len = write_arg(len, p);
 		write (1, s, len);
 		free (s);
 	}

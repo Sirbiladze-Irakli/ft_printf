@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 13:47:47 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 16:07:13 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 17:16:54 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void    push_arg_hex_oct(char **s, char *tmp, int len, t_printf *p)
 	calibr = calibration_of_prec(len, p);
     if (HASH == '1' || p->specifier == 'p')
 	{
-		push_hash(s, calibr, len, p);
+		push_hash(s, calibr, p);
 		calibr = calibr_o_x(calibr, p);
 	}
 	calibr = push_zero(s, calibr, len, p);
@@ -36,7 +36,7 @@ void    push_arg_hex_oct(char **s, char *tmp, int len, t_printf *p)
 	// 		(*s)[calibr + i] = tmp[i];
 }
 
-void	push_hash(char **s, int calibr, int len, t_printf *p)
+void	push_hash(char **s, int calibr, t_printf *p)
 {
     int     i;
 
@@ -66,6 +66,7 @@ int		calibration_of_prec(int len, t_printf *p)
 	int		res;
 	int		tmp;
 
+	res = 0;
 	if (len > p->prec)
 		tmp = len;
 	else

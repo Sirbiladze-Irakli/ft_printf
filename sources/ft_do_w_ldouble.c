@@ -3,50 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_do_w_ldouble.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brickon- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 17:27:14 by brickon-          #+#    #+#             */
-/*   Updated: 2019/08/25 17:34:56 by brickon-         ###   ########.fr       */
+/*   Updated: 2019/09/03 18:20:53 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../includes/ft_printf.h"
 
-char	*ft_printl_inf_nan(long double f, t_print *p)
+char	*ft_printl_inf_nan(long double f, t_printf *p)
 {
 	if (f / 0. == f)
 	{
-		p->zero = 0;
+		ZERO = '0';
 		return (ft_strdup("inf"));
 	}
 	else
 	{
-		p->zero = 0;
-		p->plus = 0;
+		ZERO = '0';
+		PLUS = '0';
 		return (ft_strdup("nan"));
 	}
 }
 
-char	*ft_cld2(char *s, long double f, t_print *p, unsigned int tmp)
+char	*ft_cld2(char *s, long double f, t_printf *p, unsigned int tmp)
 {
 	int i;
 
 	i = 0;
 	tmp = (unsigned int)f;
 	ft_first_free_join(&s, ".");
-	while (i < p->pres + 1)
+	while (i < p->prec + 1)
 	{
 		f = (f - (long double)tmp + 1) * 1000000.0;
 		tmp = (unsigned int)f;
 		ft_jf_utoa_push(&s, tmp, 1);
 		i += 6;
 	}
-	if (*(ft_strchr(s, '.') + p->pres + 1) >= '5')
-		return (ft_ronding(s, p->pres));
+	if (*(ft_strchr(s, '.') + p->prec + 1) >= '5')
+		return (ft_ronding(s, p->prec));
 	return (s);
 }
 
-char	*ft_conv_ldouble(long double f, t_print *p, int i)
+char	*ft_conv_ldouble(long double f, t_printf *p, int i)
 {
 	char			*s;
 	unsigned int	tmp;
