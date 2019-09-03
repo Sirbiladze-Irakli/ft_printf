@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 13:08:57 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 13:28:38 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,16 @@ int	    sort_int(va_list ap, t_printf *p)
 	HASH = '0';
 	arg = va_arg(ap, long long);
 	var_sign_modif(&arg, p);
-	printf("%lld - arg\n", arg);
+	// printf("%lld - arg\n", arg);
 	if (arg < 0)
+	{
 		SPACE = '0';
+		PLUS = '0';
+	}
 	tmp = ft_itoa(arg);
 	len = ft_strlen(tmp);
-	if ((PLUS == '1' || SPACE == '1') && arg > 0)
+	if ((PLUS == '1' || SPACE == '1') && arg >= 0)
 		int_len_modif(&len, p);
-	if (PLUS == '1' && SPACE == '1')
-		SPACE = '0';
 	format_int(&s, tmp, len, p);
 	free(tmp);
 	len = write_arg_int(s, len, p);
