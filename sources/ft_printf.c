@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:44:21 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 13:21:50 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 16:52:58 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 int			distributor(va_list ap, char *buf, t_printf *p)
 {
 	int res;
+	int  buf_size;
 
+	buf_size = ft_strlen(buf) + 1;
 	if (ft_strchr("di", p->specifier))
-		res = sort_int(ap, p);
+		res = sort_int(ap, buf_size, p);
 	else if (p->specifier == 'c')
-		res = sort_chr(ap, p);
+		res = sort_chr(ap, buf_size, p);
 	else if (p->specifier == 'p')
-	    res = sort_ptr(ap, p);
+	    res = sort_ptr(ap, buf_size, p);
 	else if (p->specifier == 's')
-		res = sort_str(ap, p);
+		res = sort_str(ap, buf_size, p);
 	else if (ft_strchr("xX", p->specifier))
-		res = sort_hex(ap, p);
+		res = sort_hex(ap, buf_size, p);
 	else if (p->specifier == 'o')
-		res = sort_oct(ap, p);
+		res = sort_oct(ap, buf_size, p);
 	else if (p->specifier == 'b')
-		res = sort_bin(p->specifier, ap);
+		res = sort_bin(p->specifier, buf_size, ap);
 	else if (p->specifier == 'u')
-		res = sort_uint(ap, p);
+		res = sort_uint(ap, buf_size, p);
 	else if (p->specifier == '%')
-		res = sort_per(p);
-	res -= ft_strlen(buf);
-	// printf("\n\n%d - size\n\n", res);
+		res = sort_per(p, buf_size);
 	return (res);
 }
 
@@ -72,6 +72,8 @@ int		ft_printf(const char *format, ...)
 	va_start(ap, format);
 	while(format[i] != '\0')
 	{
+		if (format[i] == '%' && format[i + 1] == '\0')
+			write(1, "\n", 1);
 		if (format[i] != '%')
 			write(1, &format[i], 1);
 		else
@@ -81,8 +83,9 @@ int		ft_printf(const char *format, ...)
 				;
 		}
 		i++;
+		
 	}
-	ret += i - 1;
+	ret += i;
 	va_end(ap);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 12:24:07 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 12:53:56 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 16:26:36 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,15 @@ int	    format_ptr(char **s, char *tmp, int len, t_printf *p)
 	return (size);
 }
 
-void    format_hex(char **s, char *tmp, int len, t_printf *p)
+int	    format_hex(char **s, char *tmp, int len, t_printf *p)
 {
 	int		size;
 
 	size = ft_size_mal(len, p);
 	ft_arg_mal(s, size, p);
 	push_arg_hex_oct(s, tmp, len, p);
-	write_arg_hex_oct(*s, size, p);
+	size = write_arg_hex_oct(*s, size, p);
+	return (size);
 }
 
 int	    format_oct(char **s, char *tmp, int len, t_printf *p)

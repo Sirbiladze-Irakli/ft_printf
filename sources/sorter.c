@@ -6,13 +6,13 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:36:04 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 13:28:38 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 15:20:59 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	    sort_int(va_list ap, t_printf *p)
+int	    sort_int(va_list ap, int  buf_size, t_printf *p)
 {
 	int			len;
 	long long	arg;
@@ -37,10 +37,10 @@ int	    sort_int(va_list ap, t_printf *p)
 	len = write_arg_int(s, len, p);
 	write (1, s, len);
 	free (s);
-	return (len);
+	return (len - buf_size);
 }
 
-int	    sort_chr(va_list ap, t_printf *p)
+int	    sort_chr(va_list ap, int  buf_size, t_printf *p)
 {
 	char	c1;
 	char    *s;
@@ -56,10 +56,10 @@ int	    sort_chr(va_list ap, t_printf *p)
 	len = write_arg_c(s, len, p);
 	write (1, s, len);
 	free (s);
-	return (len);
+	return (len - buf_size);
 }
 
-int		sort_str(va_list ap, t_printf *p)
+int		sort_str(va_list ap, int  buf_size, t_printf *p)
 {
 	char	*s;
 	char	*tmp;
@@ -69,7 +69,7 @@ int		sort_str(va_list ap, t_printf *p)
 	if (!(tmp = va_arg(ap, char *)))
 	{
 		write(1, "(null)", len);
-		return (len);
+		return (len - buf_size);
 	}
 	else
 	{
@@ -79,10 +79,10 @@ int		sort_str(va_list ap, t_printf *p)
 		write (1, s, len);
 		free (s);
 	}
-	return (len);
+	return (len - buf_size);
 }
 
-int		sort_ptr(va_list ap, t_printf *p)  
+int		sort_ptr(va_list ap, int  buf_size, t_printf *p)  
 {
     void	*ptr;
 	char	*tmp;
@@ -95,10 +95,10 @@ int		sort_ptr(va_list ap, t_printf *p)
 	p->prec += 2;
 	len = format_ptr(&s, tmp, len, p);
 	free (s);
-	return (len);
+	return (len - buf_size);
 }
 
-int		sort_hex(va_list ap, t_printf *p)
+int		sort_hex(va_list ap, int buf_size, t_printf *p)
 {
 	unsigned long long	arg;
 	char				*tmp;
@@ -116,7 +116,7 @@ int		sort_hex(va_list ap, t_printf *p)
 		len += 2;
 		p->prec += 2;
 	}
-	format_hex(&s, tmp, len, p);
+	len = format_hex(&s, tmp, len, p);
 	free (s);
-	return (p->width > len ? p->width : len);
+	return (len - buf_size);
 }

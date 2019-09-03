@@ -6,13 +6,13 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 19:18:31 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 12:25:48 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 15:55:27 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		sort_bin(char c, va_list ap)  // make with bytes operators
+int		sort_bin(char c, int  buf_size, va_list ap)  // make with bytes operators
 {
 	unsigned long	i;
 	char			*s;
@@ -23,10 +23,10 @@ int		sort_bin(char c, va_list ap)  // make with bytes operators
 	s = ft_itoa_base_c(i, 2, c);
 	len = ft_strlen(s);
 	write(1, s, len);
-	return (len);
+	return (len - buf_size);
 }
 
-int		sort_oct(va_list ap, t_printf *p)
+int		sort_oct(va_list ap, int  buf_size, t_printf *p)
 {
 	unsigned long long	arg;
 	char				*tmp;
@@ -42,10 +42,10 @@ int		sort_oct(va_list ap, t_printf *p)
 	len = format_oct(&s, tmp, len, p);
 	write(1, s, len);
 	free (s);
-	return (len);
+	return (len - buf_size);
 }
 
-int		sort_uint(va_list ap, t_printf *p)
+int		sort_uint(va_list ap, int  buf_size, t_printf *p)
 {
 	unsigned long long	arg;
 	int					len;
@@ -64,10 +64,10 @@ int		sort_uint(va_list ap, t_printf *p)
 	len = write_arg_int(s, len, p);
 	write (1, s, len);
 	free (s);
-	return (p->width > len ? p->width : len);
+	return (p->width > len ? p->width - buf_size : len - buf_size);
 }
 
-int		sort_per(t_printf *p)
+int		sort_per(t_printf *p, int  buf_size)
 {
 	int		len;
 	char    *s;
@@ -79,5 +79,5 @@ int		sort_per(t_printf *p)
 		len = p->width;
 	write(1, s, len);
 	free (s);
-	return (p->width > len ? p->width : len);
+	return (len - buf_size);
 }

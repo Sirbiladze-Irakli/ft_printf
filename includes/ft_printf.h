@@ -6,7 +6,7 @@
 /*   By: jormond- <jormond-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 15:58:38 by jormond-          #+#    #+#             */
-/*   Updated: 2019/09/03 12:57:46 by jormond-         ###   ########.fr       */
+/*   Updated: 2019/09/03 15:44:11 by jormond-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,15 @@ int		modif_checker(t_printf *p, char *buf, int i);
 		/* 			sorter				*/
 		/********************************/
 
-int		sort_int(va_list ap, t_printf *p);
-int		sort_uint(va_list ap, t_printf *p);
-int	    sort_chr(va_list ap, t_printf *p);
-int		sort_str(va_list ap, t_printf *p);
-int		sort_ptr(va_list ap, t_printf *p);
-int		sort_hex(va_list ap, t_printf *p);
-int		sort_oct(va_list ap, t_printf *p);
-int		sort_per(t_printf *p);
-int		sort_bin(char c, va_list ap);
+int		sort_int(va_list ap, int  buf_size, t_printf *p);
+int		sort_uint(va_list ap, int  buf_size, t_printf *p);
+int	    sort_chr(va_list ap, int  buf_size, t_printf *p);
+int		sort_str(va_list ap, int  buf_size, t_printf *p);
+int		sort_ptr(va_list ap, int  buf_size, t_printf *p);
+int		sort_hex(va_list ap, int  buf_size, t_printf *p);
+int		sort_oct(va_list ap, int  buf_size, t_printf *p);
+int		sort_per(t_printf *p, int  buf_size);
+int		sort_bin(char c, int  buf_size, va_list ap);
 
 		/********************************/
 		/* 			arg format			*/
@@ -91,8 +91,8 @@ void    format_str(char **s, char *tmp, int len, t_printf *p);
 void    format_int(char **s, char *tmp, int len, t_printf *p);
 void    format_chr(char **s, t_printf *p);
 int	    format_ptr(char **s, char *tmp, int len, t_printf *p);
-int	    format_oct(char **s, char *tmp, int len, t_printf *p);
-void    format_hex(char **s, char *tmp, int len, t_printf *p);
+int    format_oct(char **s, char *tmp, int len, t_printf *p);
+int	    format_hex(char **s, char *tmp, int len, t_printf *p);
 void	format_per(char **s, char tmp, t_printf *p);
 
 		/********************************/
@@ -127,7 +127,7 @@ void    push_per(char **s, char tmp, t_printf *p);
 int     ft_nbrlen(unsigned long i);
 int	    write_arg(char *s, int len, t_printf *p);
 int	    write_arg_c(char *s, int len, t_printf *p);
-void    write_arg_hex_oct(char *s, int size, t_printf *p);
+int	    write_arg_hex_oct(char *s, int size, t_printf *p);
 int	    write_arg_int(char *s, int len, t_printf *p);
 void    ft_strdup_free(char **s, char *arg, t_printf *p);
 void	ft_strsub_free(char **s, char *tmp, t_printf *p);
